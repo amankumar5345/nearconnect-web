@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface-variant": "#464554",
+                    "inverse-primary": "#c3c0ff",
+                    "on-background": "#0b1c30",
+                    "tertiary-container": "#a6002f",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#e3dfff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "primary-container": "#4338ca",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary": "#9d4300",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary-fixed": "#40000c",
+                    "surface-variant": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed": "#ffdbca",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-container": "#c1beff",
+                    "on-primary": "#ffffff",
+                    "primary": "#2a14b4",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "outline": "#777586",
+                    "on-tertiary-container": "#ffb0b4",
+                    "secondary-fixed-dim": "#ffb690",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#fd761a",
+                    "on-tertiary-fixed-variant": "#920028",
+                    "inverse-surface": "#213145",
+                    "on-surface": "#0b1c30",
+                    "tertiary": "#7b0020",
+                    "outline-variant": "#c7c4d7",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#372abf",
+                    "on-primary-fixed": "#100069",
+                    "surface-tint": "#5148d7",
+                    "tertiary-fixed": "#ffdada",
+                    "surface-container-low": "#eff4ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#341100",
+                    "on-secondary-fixed-variant": "#783200",
+                    "primary-fixed-dim": "#c3c0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px",
+                    "2xl": "1.5rem"
+            },
+            "spacing": {
+                    "gutter-desktop": "24px",
+                    "margin-mobile": "20px",
+                    "gutter-mobile": "16px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "40px",
+                    "unit": "8px",
+                    "4unit": "32px",
+                    "3unit": "24px",
+                    "2unit": "16px",
+                    "1.5unit": "12px",
+                    "nav": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-xl-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                    "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                    "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "headline-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Custom scrollbar for chat areas */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="h-screen w-full overflow-hidden flex flex-col md:flex-row bg-background">
+<!-- TopAppBar (Mobile Only - Matches Shared Components logic) -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter-mobile h-16 bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-primary font-extrabold">NearConnect</span>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, circular profile picture of a young man with short dark hair, wearing a casual grey t-shirt, smiling slightly against a plain light background. The image is bright and well-lit, suitable for a user avatar in a modern social application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBwR1exANrXfPAM9Cwfgq36Chf-i7ODNSU703SqFFpmE-pPjW69UiEVtwTjJ9jUdSRcH5MtOlXqJq4ydFupntXT6Hw8NqPFwzEWmjoiI6B7qMnq1MFupXraEOHxBoM81m1G3ACnpnunxUKrI8HT5h6uFl3t00QVKNuFVhUaYcdFMiCVDz49OvcQsDe5t75Dhvv8O8GP4g-EOanhawbs9iXdkDhUwyGTmiMMkM9NjqJBdXWxTrM7205irmdnEe6S1Z1-tMMgqbT2Q"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex flex-col py-6 px-4 gap-4 h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant z-40">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline-sm">NC</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-primary">NearConnect</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Local Community</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-300 ease-in-out font-label-lg text-label-lg" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-300 ease-in-out font-label-lg text-label-lg" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined">groups</span>
+<span>Community</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-300 ease-in-out font-label-lg text-label-lg" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined">emergency</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl font-bold transition-all duration-300 ease-in-out font-label-lg text-label-lg shadow-sm" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span>Chat</span>
+</a>
+</div>
+<button class="mt-auto flex items-center justify-center gap-2 w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all shadow-sm" onclick="window.location.href='/host-tournament-basic-details.html'">
+<span class="material-symbols-outlined">add</span>
+            Create Activity
+        </button>
+<div class="mt-4 pt-4 border-t border-outline-variant flex items-center gap-3 px-2">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover" data-alt="A small, circular profile picture of a young man with short dark hair, wearing a casual grey t-shirt, smiling slightly against a plain light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4u_5_EYefFvc7RjdiB5HcrqQ9-TVMlpfNOvDkC1MbMf9beQWtkwUavUQL7SX2w7PfIydRziqL6gar88ew4fdc5SpomL7at0xtm1PeWfv71vj07J14zpoMDDRbRkF8ZfOpo8-6Ddol74BXMnH1eb4FgCGIkrOquBTS6vfQJMCEDXylcSpoQgEfqOVX3ki8B-M61MFXD-mtCPCWls-pSxwi6TBrY6AcqbI1Q5KKAO4vhyfYDQWCNYebFBiZ5g6hu9GTnfL59VlQ-g"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Alex Mercer</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">View Profile</p>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:flex-row md:ml-64 pt-16 md:pt-0 h-full overflow-hidden bg-background pb-16 md:pb-0">
+<!-- Chat List Sidebar (Left Panel) -->
+<aside class="w-full md:w-[360px] h-full flex flex-col border-r border-outline-variant bg-surface-container-lowest flex-shrink-0 z-10 md:z-auto" id="chat-list-panel">
+<!-- Chat List Header -->
+<div class="px-4 py-5 border-b border-outline-variant/50">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Messages</h2>
+<button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+<!-- Search Input -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container rounded-xl border-none focus:ring-2 focus:ring-primary font-body-sm text-body-sm text-on-surface placeholder-outline-variant" placeholder="Search messages or groups..." type="text"/>
+</div>
+</div>
+<!-- Chat Filters (Chips) -->
+<div class="px-4 py-3 flex gap-2 overflow-x-auto hide-scrollbar border-b border-outline-variant/50">
+<button class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap">All</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors font-label-md text-label-md whitespace-nowrap">Groups</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors font-label-md text-label-md whitespace-nowrap">Direct</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors font-label-md text-label-md whitespace-nowrap">Unread</button>
+</div>
+<!-- Chat Items List -->
+<div class="flex-1 overflow-y-auto">
+<!-- Group Chat Item (Active) -->
+<div class="px-4 py-3 flex items-start gap-3 bg-primary-fixed cursor-pointer relative hover:brightness-95 transition-all">
+<!-- Active Indicator Line -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full"></div>
+<div class="relative w-12 h-12 flex-shrink-0">
+<img alt="Sunday Cricket Group" class="w-12 h-12 rounded-2xl object-cover border border-outline-variant/30" data-alt="A sunny day scene of a local park with people gathered around a cricket pitch. The vibrant green grass and clear blue sky evoke an active, community-focused outdoor setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLaTHUExctL44hUMmaYPaMJkezWsx8KlUo3TNKP4U5LzdqvlDiWYvWTzzvDfXrMoOai_Am2QeU8ll0xW7M_4swP1a6TfsXTbPvhgAPOeq1upY5AlI3OinbI9nGBv-942NjRfjSRsQDGg10vJogznL_0pugDvTIIZ0J4DPSN-t59JRuRIlxTf3bLRsHEifhtWu6ScsWSR-ijH7ahWrCN5JLC3MRx-TMGsnDUh7b7B8qpWd_gFPSKtlt5z_JRMXxgViDS5ejbTm_6Q"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface rounded-full flex items-center justify-center border-2 border-primary-fixed">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="font-label-lg text-label-lg text-on-surface truncate pr-2">Sunday Cricket Group</h3>
+<span class="font-label-sm text-label-sm text-primary whitespace-nowrap">10:42 AM</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant truncate">Sarah: Anyone bringing extra wickets?</span>
+<div class="w-2 h-2 rounded-full bg-primary ml-auto"></div>
+</div>
+</div>
+</div>
+<!-- DM Chat Item -->
+<div class="px-4 py-3 flex items-start gap-3 bg-transparent cursor-pointer hover:bg-surface-container-lowest transition-all border-b border-surface-container">
+<div class="relative w-12 h-12 flex-shrink-0">
+<img alt="Emma Thompson" class="w-12 h-12 rounded-full object-cover border border-outline-variant/30" data-alt="Portrait of a smiling young woman with long blonde hair, wearing a light blue top. The background is softly blurred, focusing entirely on her friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBILxvYZGDaR8VYSYeoJ_02wq9RONmkBvnblCdFW4n5F97jdPw-lQEcd9MLNoolyBjMXSn3g9piRRX0rs685pDoyz33S3qjv9qVvD4w79kWiMWIucI53Lah-UM6ybmwRexVCyxDcWn20PHx2b01QbkKV_c8g2N6ME15MF-VlvrEaPrxiQKluK9zDnN90XR_Z6fmVlWKXOBmKG_oiRkkFxXf66HogJkrqNBTQtW8QW-wWaEspAdf0IaiMMN1OR5tiHw9NkmHDxVYgg"/>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#10b981] rounded-full border-2 border-surface-container-lowest"></div> <!-- Online status -->
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="font-label-lg text-label-lg text-on-surface truncate pr-2">Emma Thompson</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap">Yesterday</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">done_all</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Thanks for the neighborhood watch update!</p>
+</div>
+</div>
+</div>
+<!-- Help/SOS Chat Item -->
+<div class="px-4 py-3 flex items-start gap-3 bg-error-container/20 cursor-pointer hover:bg-error-container/30 transition-all border-b border-surface-container">
+<div class="relative w-12 h-12 flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center border border-error/30 animate-pulse">
+<span class="material-symbols-outlined text-error text-[24px]">emergency</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="font-label-lg text-label-lg text-error truncate pr-2">Block 4 Alert</h3>
+<span class="font-label-sm text-label-sm text-error whitespace-nowrap">Mon</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Resolved: Lost dog found near park.</p>
+</div>
+</div>
+<!-- Standard Group Chat Item -->
+<div class="px-4 py-3 flex items-start gap-3 bg-transparent cursor-pointer hover:bg-surface-container-lowest transition-all border-b border-surface-container">
+<div class="relative w-12 h-12 flex-shrink-0">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center overflow-hidden">
+<div class="grid grid-cols-2 grid-rows-2 w-full h-full gap-0.5">
+<img alt="Member" class="w-full h-full object-cover" data-alt="Small headshot of a smiling man." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA_eGdehhN3QO4UETikeQ-BTir0XS_uR-a4iYR6cQSMSWveU2leF123KdjzL8FlizyCmfvahXxnvdzba3SsISptEgCw8X7MF_HBw1xr0BjQ7WYqkn05ANQ_Ymb_dWxbX8wTtiHR46dJTUFQObXLXyZNN9TRhlF9zXAtQhkxM6EDaQiY-Ll1y74wT3pfsLJ-xztHGDrgbLta34AXZ4vAmnHEDskD_N0bQ-zl4G24ng5YI6vFBTxieNzBN8nvkolKTJIPsoZsRM8DQ"/>
+<img alt="Member" class="w-full h-full object-cover" data-alt="Small headshot of a woman." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKigSFM_3LzQrgzFamHF9FOw3k5l1Chd0fBqhyZCvMcbN-dAMNu9md0TuqlSOV1fqs8iBO5vbvYss3AHNyct5XQ0g1uoNRy9MPXbCOPiqQ1KBe0HiMr5wQSjf_vrEdNcQQx1FnGB4tl-HrMqhLo2a8q_sJpgKgYLSJ37SNhIb-7PTJcrTTTz-wJuP-iEprEdine3qyWJsXRXMRyZlFTH2IPSChh4JnKk6g2H0lrFEA4_G4-lkECy-q1WkNiSnciXYUGwcDIOnAQQ"/>
+<img alt="Member" class="w-full h-full object-cover" data-alt="Small headshot of a man with glasses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIFN3LP-sFT5b6W1MCZjx0CuYEHf9hY1zDnoa2RYfJ0HDUcGXxi3F9kNIpws51YV_QKjVnpglE0vqnVW0B9OhxL_KTFZB01CclJYTiq8PqLQKFTW2XIKsyariuFw1R21y3CRwMzWVEteSLtQ-CvuVTJDqZcAGjEC2XBV-5YaIFbBOz3voGPxbBH9fdE9NBK_JDgwdmDk8PW73lhr1J7oEzHi5KukWqWVFIVEdDsysOAPICC0zSX-UBUpttH2F_1N1fPopwCkU8yQ"/>
+<div class="w-full h-full bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+4</div>
+</div>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="font-label-lg text-label-lg text-on-surface truncate pr-2">HOA Planning Commitee</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap">Mon</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">You: Let's meet at the community hall.</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Active Chat Window (Right Panel) -->
+<section class="hidden md:flex flex-1 flex-col h-full bg-surface-bright relative" id="active-chat-panel">
+<!-- Chat Header -->
+<header class="h-[72px] flex items-center justify-between px-6 border-b border-outline-variant/30 bg-surface/80 backdrop-blur-md z-20 shadow-sm relative">
+<div class="flex items-center gap-4">
+<!-- Mobile Back Button (hidden on desktop) -->
+<button class="md:hidden w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<img alt="Sunday Cricket Group" class="w-12 h-12 rounded-2xl object-cover shadow-sm border border-outline-variant/20" data-alt="A sunny day scene of a local park with people gathered around a cricket pitch. The vibrant green grass and clear blue sky evoke an active, community-focused outdoor setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwS4ZWvNNkgXv5Hj-Q07_ibXSHKMi3bHieA67QoCVvdaAotU73P5wS9fXQMsvrOdPJRdFbjyGERUaShclF55TVaMBYQlYmnshspRVa-r46mKvrjYu4UQQ0JT4FGH6y7VjbKVbcjolnE1pNpnUAAwqeWFbzYr7ZadN2oHwHIlzXD_7526Nvv6rexGElQfx0lo8pJ8K6kNDGUikzKxIYUsWkVZ7-3erznu9qt3_p1rYUhCX2SO1d-ZyLoh35YMNcXIV3sB4KvW-PXg"/>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+                            Sunday Cricket Group
+                            <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[10px] border border-outline-variant/50">Local Activity</span>
+</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
+                            12 members, 4 online
+                        </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors relative" id="toggle-sidebar-btn">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</header>
+<!-- Message Canvas -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 bg-surface-bright relative">
+<!-- Date Divider -->
+<div class="flex justify-center mb-2">
+<span class="px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant/30 font-label-sm text-label-sm text-on-surface-variant shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                        Today
+                    </span>
+</div>
+<!-- Received Message (Group member) -->
+<div class="flex items-end gap-3 max-w-[85%]">
+<img alt="David M." class="w-8 h-8 rounded-full object-cover mb-1" data-alt="Small headshot of a man with glasses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARn8Lx-pBsKRUgow53sS7MQLKhSEb-mfD6tn6b8L_W8IwjR5iZf-GEu18GSDvfvVLyGeYLTviLc8ljs2wdzCqxWUU1vFITRUySskl7zQw5feyDlrrvmSMlA_oydvX4iRA5MUFaUoqzmv-XVXGDSFIBoPsye2S8eFEKD-azcCUnY0ZJRhH5yBZTaCszd0_xmwmnx3TW1CqCDlIupdk1L0cZha6B0LgNB5DxdjKx7NpRMxVfedBlsr1gNXsaI41lzHYHZMJ3CudaFQ"/>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">David M. • 10:30 AM</span>
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-4 py-3 rounded-2xl rounded-bl-sm shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-on-surface font-body-md text-body-md">
+                            Pitch looks great today. Groundkeeper sorted the damp patches. Who's bringing the heavy roller?
+                        </div>
+</div>
+</div>
+<!-- Sent Message (User) -->
+<div class="flex items-end justify-end gap-3 max-w-[85%] self-end">
+<div class="flex flex-col gap-1 items-end">
+<div class="flex items-center gap-2 mr-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:35 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+</div>
+<div class="bg-primary text-on-primary px-4 py-3 rounded-2xl rounded-br-sm shadow-[0_4px_12px_rgba(67,56,202,0.15)] font-body-md text-body-md">
+                            I've got the roller in my truck. Will be there around 11.
+                        </div>
+</div>
+</div>
+<!-- Received Message (Another Group member) -->
+<div class="flex items-end gap-3 max-w-[85%]">
+<img alt="Sarah J." class="w-8 h-8 rounded-full object-cover mb-1" data-alt="Small headshot of a smiling woman." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd6ZTTzib8LmccMFQTGQOqMBT_YbcN3TESJTVoM3SAIQEhf9NsVORlrJ3caWmY5ULDE-eBs2A9mD20klInqSV0V7_Wq7w4uqPQf-UM6U0HOy1bT9ZmrHVsSlfZA7CK90T0Ao13g0vDpVX5OVtW1oAnZtnURPDO-Ud7pNqOxMEzL_3vNc7y9PR2jI1up_g3DmmnZfr9Pi_LNzs09jFObejDo02-aIWI_Fs4SodHukw7yuYyFPnPAMU1l3pt9OxHbasGKar4fPd2oA"/>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">Sarah J. • 10:42 AM</span>
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-4 py-3 rounded-2xl rounded-bl-sm shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-on-surface font-body-md text-body-md">
+                            Anyone bringing extra wickets? I think we broke a stump last week. 🏏
+                        </div>
+</div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex items-end gap-3 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">more_horiz</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm flex gap-1 items-center h-[48px]">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant animate-bounce" style="animation-delay: 0ms;"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant animate-bounce" style="animation-delay: 150ms;"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant animate-bounce" style="animation-delay: 300ms;"></div>
+</div>
+</div>
+</div>
+<!-- Chat Footer (Input) -->
+<div class="p-4 bg-surface/90 backdrop-blur-md border-t border-outline-variant/30">
+<div class="max-w-4xl mx-auto relative flex items-end gap-3">
+<button class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-surface-container hover:bg-surface-container-highest text-on-surface-variant transition-colors group">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">add_circle</span>
+</button>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-2xl flex items-end min-h-[48px] shadow-[0_2px_6px_rgba(0,0,0,0.02)] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<button class="w-10 h-[48px] flex items-center justify-center text-outline hover:text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 resize-none py-3 px-2 font-body-md text-body-md text-on-surface placeholder-outline-variant min-h-[48px] max-h-[120px]" placeholder="Type a message..." rows="1"></textarea>
+</div>
+<button class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-secondary-container text-on-secondary-container hover:brightness-110 shadow-sm transition-all transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Info Sidebar (Hidden by default, toggled via info icon) -->
+<aside class="hidden xl:flex flex-col w-[300px] border-l border-outline-variant bg-surface h-full flex-shrink-0 transition-all duration-300 transform translate-x-0 overflow-y-auto" id="info-sidebar">
+<div class="p-6 flex flex-col items-center border-b border-outline-variant/30">
+<img alt="Group Photo" class="w-24 h-24 rounded-3xl object-cover mb-4 shadow-md" data-alt="A sunny day scene of a local park with people gathered around a cricket pitch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8VYtHF4_fxWDxr1G0wMqs4HaTmpC_YTi2pjGE_ma5STXhrIIMnn4YrZGVPEeepj_acEiERyEi7jMFDGpvyvSCYNxbd__fnJ9ndnFI6ZWCduVP6iigLBiRMFDFtW7MyWKPgfXd4lX2o6ci42MZO27KBu7MrZWM8Zz7joXUxl5YjxRSHG3accJ11MEOjmD52xHW33MPKBcZwqN7SZElkoxtF7AvdAZa4CM2-RQvWEYcDThYOSa6vqS4SGrFHKzgNz-dv3zgHsciug"/>
+<h3 class="font-headline-md text-headline-md text-on-surface text-center mb-1">Sunday Cricket Group</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center mb-4">Community Activity Group • 12 Members</p>
+<div class="flex gap-3 w-full">
+<button class="flex-1 flex flex-col items-center justify-center py-2 bg-surface-container rounded-xl hover:bg-surface-container-high transition-colors text-primary">
+<span class="material-symbols-outlined mb-1">notifications_off</span>
+<span class="font-label-sm text-[10px]">Mute</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center py-2 bg-surface-container rounded-xl hover:bg-surface-container-high transition-colors text-primary">
+<span class="material-symbols-outlined mb-1">search</span>
+<span class="font-label-sm text-[10px]">Search</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-label-lg text-label-lg text-on-surface-variant mb-3 uppercase tracking-wider text-[11px]">Shared Media</h4>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="Cricket ball" class="w-full h-full object-cover" data-alt="Close up of a red leather cricket ball resting on dry grass, representing the sport." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBST2o3lWbicznshbtJh6dxIdaMxAqQ30qJ_cHPGzuEDmZsTdINuDar5ELvBtGn0-UDoYSQDpE7_te5Gczs9Rk6av9HcdUiJbU0BVFnpy6hqwXGbR5E3iwzzUTKqhgHQtcH3oQMSU4IpQblqNw0u9kS-LbEBFh5G0x-o7-jcZDQ24KowVzYJUTJiohE1efXWkYgJQDEQzrFDWDPytxHI14wW3MhazqUD4MS--zo1J5gj87R27hcIyw5YJPx-tlkjjG_bi7wG3mr_g"/>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="Pitch" class="w-full h-full object-cover" data-alt="A sunny day scene of a local park with people gathered around a cricket pitch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd1XrcdoiXUY7UNlehPXkvtCI1IwdxSXcO0PQ8qKvhGjDhL1El2YFx29v3KIWHrFFCXJBvapLr57er5AUApKpNm1_NKsU-G_RXcpJlk1neweoanZcJEHBPNP4PpPv14ZnWKduy9zPXWp88zLoKuR-e6KA4T59WQf5-7D3os5jQWXP5FzI4XcsIBGoZQpwXrdjVUszbh4n1D2dsTLq9DERBEMyEKOB7kxu17U62I4oe4YKhA03bPblyORchafMEAEwQW16WTRSXAA"/>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container-high flex items-center justify-center bg-surface-container text-on-surface-variant cursor-pointer hover:bg-surface-container-highest">
+<span class="font-label-md">+14</span>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant/30">
+<h4 class="font-label-lg text-label-lg text-on-surface-variant mb-3 uppercase tracking-wider text-[11px]">Members (12)</h4>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="User" class="w-8 h-8 rounded-full" data-alt="Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOc49WNF4xY88JnoGOAx0ZICM3Ru7Z1A3FZ_oYaeB0mqaP4uL3tUpBU6ewud-wUqpzZO7LvEPbUU5mNe2z6BM5lBzS_WZz3gwNH3Hi6HylbtNRLFpuxZKHDW1_hn4ohmeJGZYSRF_aJGzXu2kSPra_kgZYPc4lCgAr1ih_WToIqIEJ2jNbA7QdVsVFqU_Df-MWuoJJ0cxkelSToJPbp86Z1FLKmIX-5HuSlx0mFXInH8Yx8Rj8woSU3c8Ms-U0cge7CqNQkR9a4Q"/>
+<span class="font-body-sm text-on-surface">Alex Mercer (You)</span>
+</div>
+<div class="flex items-center gap-3">
+<img alt="User" class="w-8 h-8 rounded-full" data-alt="Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnabfP4pIJZRgGJ7sE2ySTTZWwNg5U9UEUx3R2dfrmb7scPkEQqomxpEtiP2hd0msQHFpEcKHg4py6-nr89cDHBIk8G0PngAaUe6pAurHBLHzq2bepPPCRpk8NNXYfJTCuqt0xQQVYSXip-S-zyX1Ea4elPd5E4TC9_CQPI1uN4hyXA3eW31rTpK9u9WXUNcpBj4GnTRdQ6KfZRm6ksNmP_7NEykIXf1evgjqTnpANrL3PEzn_ElyRwqq7gvBvB9xxjdQ5rpKddQ"/>
+<div class="flex-1">
+<span class="font-body-sm text-on-surface block leading-tight">David M.</span>
+<span class="font-label-sm text-[10px] text-primary">Admin</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img alt="User" class="w-8 h-8 rounded-full" data-alt="Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmiVRtN5yzIr99zoDADY55y9PCjIl67xlR1kSpR4AdOG8DG-FV4Ek2H5pXFaA7W_oG4416vAXyNdiH8A4QINry_FV5JLHagbgUILZvWf18kVL34aa_At6iP9apbMirqFdqBxG0tsiiD1IUccRYeK0glY8OPQKBrwMlBmXbO2pnKKhPkfD6cIzr7JGVU7fnZUvSvTvXkwjfi9iotZ7n2H4vEPHKNDjfObi-chKg924sWA4F95TBkELnsj4IUNxkna5-kqX2xHRJew"/>
+<span class="font-body-sm text-on-surface">Sarah J.</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container shadow-[0_-2px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 rounded-xl py-1" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 rounded-xl py-1" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 rounded-xl py-1" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined">emergency</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="font-label-sm text-label-sm-mobile mt-1 font-bold">Chat</span>
+</a>
+</nav>
+<script>
+        // Simple script to toggle the right info sidebar on desktop
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('toggle-sidebar-btn');
+            const sidebar = document.getElementById('info-sidebar');
+            
+            if(toggleBtn && sidebar) {
+                toggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('xl:flex');
+                    // Add a subtle active state to the button
+                    toggleBtn.classList.toggle('bg-primary-container');
+                    toggleBtn.classList.toggle('text-on-primary-container');
+                });
+            }
+        });
+    </script>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>

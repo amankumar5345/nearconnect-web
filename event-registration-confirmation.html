@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Event Registration Confirmed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e3dfff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface-variant": "#464554",
+                        "secondary-container": "#fd761a",
+                        "on-primary-container": "#c1beff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#920028",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-container": "#5c2400",
+                        "on-primary-fixed": "#100069",
+                        "surface-tint": "#5148d7",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-fixed": "#ffdbca",
+                        "secondary-fixed-dim": "#ffb690",
+                        "secondary": "#9d4300",
+                        "outline-variant": "#c7c4d7",
+                        "on-secondary-fixed": "#341100",
+                        "outline": "#777586",
+                        "on-primary-fixed-variant": "#372abf",
+                        "tertiary-container": "#a6002f",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#2a14b4",
+                        "inverse-primary": "#c3c0ff",
+                        "inverse-surface": "#213145",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#dce9ff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background": "#f8f9ff",
+                        "tertiary": "#7b0020",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "tertiary-fixed": "#ffdada",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "primary-container": "#4338ca",
+                        "on-secondary-fixed-variant": "#783200",
+                        "error": "#ba1a1a",
+                        "on-background": "#0b1c30",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#40000c",
+                        "on-tertiary-container": "#ffb0b4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "40px",
+                        "gutter-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "gutter-desktop": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background h-full font-body-md antialiased flex flex-col items-center pt-8 md:pt-16 px-margin-mobile md:px-margin-desktop">
+<!-- Top Navigation (Hidden as it's a linear transactional page, but keeping branding anchor) -->
+<header class="w-full max-w-container-max-width flex justify-center mb-8 md:mb-12">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">NearConnect</h1>
+</header>
+<main class="w-full max-w-2xl bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative">
+<!-- Progress Stepper -->
+<div class="px-6 py-4 bg-surface-container-low border-b border-outline-variant/20 flex justify-between items-center text-label-sm font-label-sm">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-5 h-5 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">1</span>
+<span>Select</span>
+</div>
+<div class="h-px bg-outline-variant/30 flex-1 mx-2"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-5 h-5 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">2</span>
+<span>Details</span>
+</div>
+<div class="h-px bg-primary/40 flex-1 mx-2"></div>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[12px] font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+<span>Confirmed</span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-8 md:p-12 flex flex-col items-center text-center">
+<!-- Success Animation / Icon -->
+<div class="w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-6 shadow-sm ring-8 ring-primary-container/20">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Registration Confirmed!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md">
+                You're all set. We've sent a confirmation email with these details to your inbox.
+            </p>
+<!-- Registration Summary Card -->
+<div class="w-full bg-surface rounded-xl border border-outline-variant/30 p-6 text-left mb-8 shadow-sm relative overflow-hidden">
+<!-- Decorative element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0"></div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 relative z-10 border-b border-outline-variant/20 pb-2">Event Summary</h3>
+<div class="space-y-4 relative z-10">
+<div class="flex flex-col sm:flex-row justify-between gap-1">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Event</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Brooklyn Heights Community Clean-up</span>
+</div>
+<div class="flex flex-col sm:flex-row justify-between gap-1">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Date &amp; Time</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Sat, Oct 14 • 9:00 AM - 1:00 PM</span>
+</div>
+<div class="flex flex-col sm:flex-row justify-between gap-1">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Location</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Cadman Plaza Park</span>
+</div>
+<div class="flex flex-col sm:flex-row justify-between gap-1">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Attendees</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">2 Adults</span>
+</div>
+</div>
+</div>
+<!-- Check-in QR Code -->
+<div class="mb-8 flex flex-col items-center">
+<span class="font-label-lg text-label-lg text-on-surface-variant mb-3 uppercase tracking-wider">Your Check-in Code</span>
+<div class="p-3 bg-white border border-outline-variant/20 rounded-lg shadow-sm">
+<!-- Placeholder for QR Code, using a generated image pattern for visual representation -->
+<div class="w-32 h-32 bg-surface-container-high rounded flex items-center justify-center overflow-hidden">
+<img alt="QR Code placeholder" class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="A clean, abstract black and white geometric pattern resembling a sophisticated high-density QR code. The image is rendered in stark monochromatic tones, sitting on a pristine white background. It has a modern, digital aesthetic, perfectly suited for a clean, light-mode corporate UI where structural clarity is paramount." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGicufG6syj7uOHGnpfEK5lOIc2OM2VaKCC4MdS-IJO9pkN8PHdvjyGtIrYvpliZaWRI7B9Ji89vAlknscJVVbOUNxgQCz3wMm4ocCtjOoyL06FM31x8RsZ4XcMSkaG4NrmARr_hCVGmcFKp7_x9LZRKUI6NAsJ4JYgdQCni_OmBI0Qefx9xPv1PaJSMam838ix_novEtPGpqSXBdih7HtMKRrepJN55SnMTIARD_dJG96q2h5eoDUDHWGJH_qeD09Ed87m2izgw"/>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col sm:flex-row gap-4 justify-center mt-2">
+<button class="flex-1 max-w-[200px] h-12 rounded-[16px] bg-secondary-container text-on-secondary-container font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-secondary-container/90 transition-colors shadow-sm" onclick="window.location.href='/nearconnect-home-feed.html'" onclick="window.location.href='/nearconnect-home-feed.html'">
+<span class="material-symbols-outlined text-[20px]">calendar_add_on</span>
+                    Add to Calendar
+                </button>
+<button class="flex-1 max-w-[200px] h-12 rounded-[16px] bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
+                    View My Events
+                </button>
+</div>
+<a class="mt-6 font-label-md text-label-md text-primary hover:underline" href="/nearconnect-home-feed.html">Return to Home</a>
+</div>
+</main>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>

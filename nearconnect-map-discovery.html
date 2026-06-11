@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Map View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed": "#e3dfff",
+                    "on-tertiary-fixed-variant": "#920028",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "outline": "#777586",
+                    "background": "#f8f9ff",
+                    "surface-tint": "#5148d7",
+                    "surface-dim": "#cbdbf5",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container": "#e5eeff",
+                    "secondary": "#9d4300",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary-container": "#a6002f",
+                    "on-surface-variant": "#464554",
+                    "secondary-fixed-dim": "#ffb690",
+                    "outline-variant": "#c7c4d7",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-fixed": "#ffdbca",
+                    "on-primary-fixed": "#100069",
+                    "tertiary": "#7b0020",
+                    "surface": "#f8f9ff",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary-fixed": "#ffdada",
+                    "on-tertiary-fixed": "#40000c",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#5c2400",
+                    "on-secondary-fixed-variant": "#783200",
+                    "on-primary-fixed-variant": "#372abf",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#c1beff",
+                    "on-background": "#0b1c30",
+                    "on-surface": "#0b1c30",
+                    "inverse-surface": "#213145",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#ffb0b4",
+                    "secondary-container": "#fd761a",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#4338ca",
+                    "primary": "#2a14b4",
+                    "on-secondary-fixed": "#341100",
+                    "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "40px",
+                    "gutter-desktop": "24px",
+                    "margin-mobile": "20px",
+                    "gutter-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-xl-mobile": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>.pulse-ring {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite
+    }
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        } 50% {
+        opacity: .5;
+        transform: scale(1.5);
+        }
+    }
+.map-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBTcLnfvtEJG25Zs7e2zIeq3n4sKgRoOD_SNKjGpMkf4QfqrFvFS4ZZc64tuQPQ-O5OW4UB2zDSOsLs93zXLwUfk3HKu0opBurzXytST9XTfS6YjZp3tf5VvglcBgX-aFP3E5xj-UCAvim40ZjgRXFoU1FsXwAsuL-ODC2vQoHj_5krMxAHLQB3YpINe3q7QEe9MwCa9fw8-ONZtW6sbyvS2eNdyAhsZNbRtFYM01VsGYPq3YqwRDGXI_3qO9u-GAQJnVm1QaxFNw);
+    background-size: cover;
+    background-position: center
+    }</style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter-mobile h-16 bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-3">
+<span class="font-headline-md text-headline-md text-primary font-extrabold">NearConnect</span>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<button class="material-symbols-outlined active:scale-95 duration-200" data-icon="search" onclick="window.location.href='/event-registration-step-1.html'" onclick="window.location.href='/host-tournament-basic-details.html'">search</button>
+<button class="material-symbols-outlined active:scale-95 duration-200" data-icon="notifications">notifications</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full border-2 border-surface-container-highest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLAAFJiP4PMCQHd8kqhOqFNSp0KiCbrgvhScfYu9ZN5RSLrHyc2TP5G1q6XH8Vf397qkH6J8USVcuzSK9lAXheJhh42AIDWzoPLOmnPto8hr5CUUJAI6-hEYdabmjbmIuwGAGCI5gXW0v8YZvxzHjb93Uv0idUfyXtWdT4guivObefsVMbjwVpkJEapr5HxrEwHkheyIOhbiIKmNT6V9X_XJNzZWaLMR_VQqJBrWcsIrtuIsCNb1imE_H0pgL2RfevON70LNneVA"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex flex-col py-6 px-4 gap-4 bg-surface border-r border-outline-variant h-screen w-64 fixed left-0 top-0 z-40">
+<div class="flex flex-col gap-1 mb-8 px-4">
+<div class="flex items-center gap-3 mb-2">
+<img alt="User profile" class="w-10 h-10 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq9jU7HQxtE3RUaGPQBggokUnrjEXmLKLSOmc3r22sW6SIi_4jfOX97CRLvMzM-9pYD6ZbLdYUko2cGsAx437kK5Ix-9qwH1fVDs8cNLZ8L11YRKI_BrRUmhi0qBzdZ4vQ6VsUZygHhSgJnVX5-eGnSivY2y-rMLf10vVSwbqVMcSc4iU66YzErfRULHzRgQdHAdI1DzAAppkDTKzg060UIskMG2qDfFYXYJh9uUeqIU4Hc-BV4vp5_zb87qjzZo2ysaLoXgj8hA"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+<div>
+<h1 class="font-headline-sm text-headline-sm text-primary font-extrabold">NearConnect</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Local Community</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<!-- Explore is implicitly active since we are on a Map Discovery view -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl font-bold font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                Community
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+                Help
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                Chat
+            </a>
+</div>
+<button class="mt-auto flex items-center justify-center gap-2 bg-secondary text-on-secondary py-3 px-4 rounded-xl font-label-lg text-label-lg hover:opacity-90 transition-opacity w-full">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            Create Activity
+        </button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 relative h-full w-full map-bg" data-alt="A clean, modern digital map interface styled in a light silver and white theme. The map shows a detailed urban street layout with subtle topographical features. The lighting is bright and UI-centric, designed for optimal legibility. The aesthetic is professional, minimalist, and functional, consistent with high-end location-based applications. Soft shadows separate interactive elements from the flat map layer.">
+<!-- Top Overlay Area -->
+<div class="absolute top-20 md:top-6 left-0 right-0 px-gutter-mobile md:px-margin-desktop z-10 pointer-events-none flex flex-col gap-4">
+<!-- Floating Search & Filter Bar -->
+<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-2xl shadow-lg border border-outline-variant p-2 md:p-3 flex flex-col md:flex-row gap-3 pointer-events-auto max-w-4xl mx-auto w-full">
+<!-- Search Input -->
+<div class="flex-1 flex items-center bg-surface-container-low rounded-xl px-4 py-2 border border-transparent focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-3" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-sm text-body-sm text-on-surface placeholder-on-surface-variant p-0 h-8" placeholder="Search area, activities, or help..." type="text"/>
+</div>
+<!-- Distance Slider (Simplified for UI) -->
+<div class="hidden md:flex items-center gap-3 px-4 py-2 bg-surface-container-low rounded-xl border border-transparent">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="map">map</span>
+<div class="flex flex-col w-32">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-1">
+<span>1km</span>
+<span>Within 5km</span>
+</div>
+<div class="h-1 bg-outline-variant rounded-full w-full relative">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full w-1/3"></div>
+<div class="absolute top-1/2 left-1/3 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+<!-- View Toggle -->
+<div class="flex items-center bg-surface-container-low rounded-xl p-1 shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm font-label-md text-label-md text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+                        Map
+                    </button>
+<button class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant flex items-center gap-1 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="list">list</span>
+                        List
+                    </button>
+</div>
+</div>
+<!-- Category Filters (Chips) -->
+<div class="flex gap-2 overflow-x-auto pb-2 pointer-events-auto hide-scrollbar max-w-4xl mx-auto w-full">
+<button class="px-4 py-2 rounded-full border border-primary bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap flex items-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+                    All Types
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-label-md text-label-md whitespace-nowrap flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+                    Activities
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-label-md text-label-md whitespace-nowrap flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+                    Help Requests
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-label-md text-label-md whitespace-nowrap flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+                    Events
+                </button>
+</div>
+</div>
+<!-- Interactive Map Pins -->
+<!-- Pin 1: Activity (Indigo) -->
+<div class="absolute top-[40%] left-[30%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20">
+<div class="relative flex items-center justify-center w-10 h-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+<div class="w-8 h-8 bg-primary rounded-full border-2 border-surface-container-lowest shadow-md flex items-center justify-center z-10 text-on-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="directions_run">directions_run</span>
+</div>
+</div>
+</div>
+<!-- Pin 2: Help Request (Red/Tertiary - Pulsing) -->
+<div class="absolute top-[55%] left-[60%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20">
+<div class="relative flex items-center justify-center w-12 h-12">
+<div class="absolute inset-0 bg-error/30 rounded-full pulse-ring"></div>
+<div class="w-10 h-10 bg-error rounded-full border-2 border-surface-container-lowest shadow-lg flex items-center justify-center z-10 text-on-error">
+<span class="material-symbols-outlined text-[20px]" data-icon="emergency">emergency</span>
+</div>
+<!-- Tooltip preview on hover -->
+<div class="absolute top-full mt-2 w-max bg-surface-container-highest text-on-surface px-3 py-1 rounded-md text-label-sm font-label-sm shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    Needs Groceries • 1.2km
+                </div>
+</div>
+</div>
+<!-- Pin 3: Event (Secondary/Orange) -->
+<div class="absolute top-[30%] left-[75%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20">
+<div class="relative flex items-center justify-center w-10 h-10">
+<div class="absolute inset-0 bg-secondary-container/20 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+<div class="w-8 h-8 bg-secondary-container rounded-full border-2 border-surface-container-lowest shadow-md flex items-center justify-center z-10 text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="local_cafe">local_cafe</span>
+</div>
+</div>
+</div>
+<!-- Selection Card Overlay (Bottom/Side depending on screen) -->
+<div class="absolute bottom-20 md:bottom-8 left-0 right-0 px-gutter-mobile md:px-0 md:left-auto md:right-8 w-full md:w-[400px] z-30 pointer-events-auto">
+<div class="bg-surface-container-lowest rounded-[24px] shadow-[0_8px_24px_rgba(0,0,0,0.12)] border border-outline-variant overflow-hidden flex flex-col transform transition-transform duration-300 translate-y-0">
+<!-- Header/Image -->
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Activity header image" class="w-full h-full object-cover z-0" data-alt="A close up view of a pair of running shoes on a paved park trail. The lighting is early morning, casting long soft shadows. The overall mood is energetic and healthy. The colors are natural and vibrant, with hints of green from surrounding foliage. The visual style is crisp photography suited for a community activity header." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvmU7iPFAuQ4NHnvAG6ES8BWBKXMUDqKhTHRbvz1Vx4TX4Y4WtPeqjKRwjMHeUzi17kuIBG9puNFjuOku4Anjy31mdb4QTrhqo8rLxlOMYPj2bXRnnxdXwH5px6V2SPKW2gyYBSQgNKmU2LoQEE9DbavGcUc1xMzKIGLgqOQdq7C_5SZfSz8wbCXY2a2ZcLHBQqYVPBB8uUw-wcgIPvG9sM4RR4R63UlKgHYSoXp7z2uJORWDqny3SNXSGuLn21S3bw88_6lIgdA"/>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-4 z-20 flex gap-2">
+<span class="px-2 py-1 bg-primary text-on-primary rounded-md font-label-sm text-label-sm shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="directions_run">directions_run</span>
+                            Activity
+                        </span>
+<span class="px-2 py-1 bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface rounded-md font-label-sm text-label-sm shadow-sm">
+                            Today, 5:30 PM
+                        </span>
+</div>
+</div>
+<!-- Content -->
+<div class="p-5 flex flex-col gap-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">Evening 5K Park Run</h2>
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                            Prospect Park Loop • 0.8km away
+                        </div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-3 rounded-xl border border-surface-container-high">
+<img alt="Host avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATcMEhnjhVJYVULKoN448WxqQGTD1eNLUbtbdb8O1leUEosfulLeGrpptXbxfRYB5dkQ2h1JOCD16a2TQDTU5rkbQ_wdfrcZQE6uG33_Io3h2o413eXIweVlDSwY94PDFyKWN99ak7i8xJoR7GypBOJGhg5kshTln2gmn6V2K9psxyKqob9zMGzt1oG0pqHE4AvUhxET06svz3siyUAC536BwCQnnXAHjmh6ahQWRcMDdEmyYnSWubTupa1_29kF3gRw5Hxu9RrQ"/>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface">Hosted by Sarah M.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active Community Member</p>
+</div>
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-surface-container-lowest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc7vbmy1iCKQbVADtwfE95KTdtr_ihJO1iEpvdcmhoXU_mKtUYkON-px3guKCvgVTj7W2YEA3HfqH2acQR2sQaaZDhLIUuSCYEr_q187m7-Gfbw9B-dNkGx6NvXzNijlGamnJmoy9FlBlfLBq-w6-qOCRTMlgsLMGJ3EFr3VXKfmwacrBeTF7WoZ6r46XRRdFcK7pYuYY-Bzb5EwV3Xrdb6Olgc7p-Lho3Ua6e3f89ZJAuz8cjG18duDJwfsoijKxErZ2RkAGm5w"/>
+<img class="w-6 h-6 rounded-full border-2 border-surface-container-lowest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHRWdvRk3saOGeVqf-rCu2vsUBgJRjhfApwT7XKv4QlakzNJwO_uD3nnV_DvfGFc2C71IhiRrPMkssTTHLPDII_VmbRoUIsrwoFkZAyb3pa6wjU_QjT9qgqptHHNQnt3S9vfiJugdwLm3d1oGF5X0J0Lz5gJ6dZIVhnBKb-YsVpuVp7COyUtr1zLzYKFgOijm8MNw3zNstImjnTzd6eh3k_i0ilFAuQwhovTPFnTgrEk0Ein98Py8bosc4DUK76H9_Cq1oSBG-Sw"/>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-lowest bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-on-surface-variant">+4</div>
+</div>
+</div>
+<div class="flex gap-3 mt-2">
+<button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-label-lg text-label-lg hover:bg-primary/90 transition-colors shadow-sm">
+                            Enroll Now
+                        </button>
+<button class="w-12 h-12 bg-surface-container text-primary rounded-xl flex items-center justify-center border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container shadow-[0_-2px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 font-label-sm text-label-sm-mobile active:scale-90 transition-transform duration-150" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 font-label-sm text-label-sm-mobile hover:bg-surface-container-highest transition-all rounded-full py-1" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="mt-1">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 font-label-sm text-label-sm-mobile hover:bg-surface-container-highest transition-all rounded-full py-1" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="mt-1">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 font-label-sm text-label-sm-mobile hover:bg-surface-container-highest transition-all rounded-full py-1" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="mt-1">Chat</span>
+</a>
+</nav>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>

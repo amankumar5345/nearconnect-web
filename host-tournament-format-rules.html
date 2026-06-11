@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Host Tournament: Format &amp; Rules</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#2a14b4",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-container": "#c1beff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "secondary-container": "#fd761a",
+                        "on-tertiary-fixed-variant": "#920028",
+                        "inverse-surface": "#213145",
+                        "on-surface": "#0b1c30",
+                        "tertiary": "#7b0020",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "outline": "#777586",
+                        "on-tertiary-container": "#ffb0b4",
+                        "secondary-fixed-dim": "#ffb690",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed": "#100069",
+                        "surface-tint": "#5148d7",
+                        "outline-variant": "#c7c4d7",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#372abf",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "tertiary-fixed": "#ffdada",
+                        "surface-container-low": "#eff4ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#341100",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "on-background": "#0b1c30",
+                        "tertiary-container": "#a6002f",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e3dfff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface-variant": "#464554",
+                        "inverse-primary": "#c3c0ff",
+                        "primary-container": "#4338ca",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary": "#9d4300",
+                        "background": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed": "#ffdbca",
+                        "on-secondary-container": "#5c2400",
+                        "on-tertiary-fixed": "#40000c",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max-width": "1280px",
+                        "unit": "8px",
+                        "gutter-desktop": "24px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen pb-24 md:pb-0">
+<!-- Top Navigation Area - Simplified for transactional flow -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors" onclick="window.location.href='/host-tournament-format-rules-with-entry-fee.html'" onclick="window.location.href='/host-tournament-format-rules-with-entry-fee.html'">
+<span class="material-symbols-outlined">close</span>
+</button>
+<span class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-on-surface font-bold">Host Tournament</span>
+</div>
+<div class="font-label-lg text-label-lg text-primary">Save Draft</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Stepper -->
+<div class="flex justify-center items-center mb-8 gap-4 max-w-2xl mx-auto">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="hidden md:inline">Basic Info</span>
+</div>
+<div class="h-0.5 flex-1 bg-primary max-w-[100px]"></div>
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center border-2 border-primary">2</div>
+<span class="font-bold">Format &amp; Rules</span>
+</div>
+<div class="h-0.5 flex-1 bg-surface-container-high max-w-[100px]"></div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md opacity-50">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">3</div>
+<span class="hidden md:inline">Publish</span>
+</div>
+</div>
+<div class="max-w-3xl mx-auto bg-surface-container-lowest rounded-[24px] shadow-md border border-outline-variant/30 p-6 md:p-10">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Format &amp; Rules</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Define how your tournament will be played and who can enter.</p>
+<form class="space-y-10">
+<!-- Tournament Format -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Tournament Format</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="format" type="radio" value="single"/>
+<div class="p-4 rounded-xl border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed bg-surface hover:bg-surface-container transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[32px] text-primary">account_tree</span>
+<span class="font-label-lg text-label-lg text-on-surface peer-checked:text-on-primary-fixed">Single Elimination</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant peer-checked:text-on-primary-fixed-variant">Lose once, and you're out. Fast and intense.</span>
+</div>
+</label>
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="format" type="radio" value="double"/>
+<div class="p-4 rounded-xl border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed bg-surface hover:bg-surface-container transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[32px] text-primary">mediation</span>
+<span class="font-label-lg text-label-lg text-on-surface peer-checked:text-on-primary-fixed">Double Elimination</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant peer-checked:text-on-primary-fixed-variant">A second chance for losers to bounce back.</span>
+</div>
+</label>
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="format" type="radio" value="round"/>
+<div class="p-4 rounded-xl border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed bg-surface hover:bg-surface-container transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[32px] text-primary">cycle</span>
+<span class="font-label-lg text-label-lg text-on-surface peer-checked:text-on-primary-fixed">Round Robin</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant peer-checked:text-on-primary-fixed-variant">Everyone plays everyone. Most points wins.</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Team Size -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Team Size</h2>
+<div class="flex flex-wrap gap-4">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="team_size" type="radio" value="solo"/>
+<div class="px-6 py-3 rounded-full border border-outline-variant peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary bg-surface text-on-surface font-label-lg text-label-lg hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">person</span> Solo
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="team_size" type="radio" value="duo"/>
+<div class="px-6 py-3 rounded-full border border-outline-variant peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary bg-surface text-on-surface font-label-lg text-label-lg hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">group</span> Duo (2)
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="team_size" type="radio" value="squad"/>
+<div class="px-6 py-3 rounded-full border border-outline-variant peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary bg-surface text-on-surface font-label-lg text-label-lg hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">groups</span> Squad (4+)
+                            </div>
+</label>
+</div>
+</section>
+<!-- Entry Rules -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Entry Requirements</h2>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/50">
+<div class="flex items-center h-6">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary focus:ring-2 bg-surface" id="verified_only" type="checkbox"/>
+</div>
+<div class="flex-1">
+<label class="font-label-lg text-label-lg text-on-surface block mb-1" for="verified_only">Verified Neighbors Only</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Only users who have verified their location within 5 miles can enter. Recommended for physical events.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/50">
+<div class="flex items-center h-6">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary focus:ring-2 bg-surface" id="skill_req" type="checkbox"/>
+</div>
+<div class="flex-1">
+<label class="font-label-lg text-label-lg text-on-surface block mb-1" for="skill_req">Skill Level Restriction</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">Restrict entry to specific skill tiers to ensure fair matchmaking.</p>
+<select class="w-full md:w-1/2 p-3 rounded-lg border border-outline-variant bg-surface text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option value="all">Open to All Skill Levels</option>
+<option value="beginner">Beginner / Casual</option>
+<option value="intermediate">Intermediate / Amateur</option>
+<option value="advanced">Advanced / Pro</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center pt-6 border-t border-outline-variant/30">
+<button class="px-6 py-3 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container transition-colors border border-outline-variant" type="button">
+                        Back
+                    </button>
+<button class="px-8 py-3 rounded-full font-label-lg text-label-lg bg-primary text-on-primary hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center gap-2" type="button">
+                        Next Step
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>

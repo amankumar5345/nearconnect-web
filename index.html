@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Your neighborhood, verified.</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb3b6",
+                      "tertiary": "#7b0020",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#100069",
+                      "on-secondary-fixed-variant": "#783200",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#5c2400",
+                      "background": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "primary-container": "#4338ca",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffdada",
+                      "tertiary-container": "#a6002f",
+                      "primary-fixed": "#e3dfff",
+                      "primary": "#2a14b4",
+                      "outline-variant": "#c7c4d7",
+                      "secondary-container": "#fd761a",
+                      "on-surface": "#0b1c30",
+                      "inverse-primary": "#c3c0ff",
+                      "surface-tint": "#5148d7",
+                      "surface-variant": "#d3e4fe",
+                      "outline": "#777586",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed": "#ffdbca",
+                      "secondary-fixed-dim": "#ffb690",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#40000c",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "secondary": "#9d4300",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#c1beff",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-container": "#e5eeff",
+                      "inverse-surface": "#213145",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface-variant": "#464554",
+                      "on-tertiary-container": "#ffb0b4",
+                      "on-tertiary-fixed-variant": "#920028",
+                      "surface-bright": "#f8f9ff",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "surface": "#f8f9ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-secondary-fixed": "#341100",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-primary-fixed-variant": "#372abf"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max-width": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter-mobile": "16px",
+                      "unit": "8px",
+                      "gutter-desktop": "24px",
+                      "margin-desktop": "40px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-sm": ["Plus Jakarta Sans"],
+                      "headline-xl-mobile": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-xl": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-xl-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-16 pb-20 md:pb-0">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex fixed top-0 w-full z-50 bg-surface dark:bg-on-background shadow-sm shadow-sm dark:shadow-none docked full-width top-0">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-2 h-16 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">NearConnect</span>
+<nav class="hidden lg:flex gap-8">
+<!-- Home is Active -->
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary font-label-lg text-label-lg py-1 hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="/nearconnect-home-feed.html">Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-lg text-label-lg py-1 hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="/nearconnect-activity-hub.html">Community</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-lg text-label-lg py-1 hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="/nearconnect-community-help-sos.html">Help</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 text-body-sm text-on-surface focus:ring-2 focus:ring-primary" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="notifications" onclick="window.location.href='/nearconnect-onboarding-flow.html'" onclick="window.location.href='/nearconnect-onboarding-flow.html'" onclick="window.location.href='/event-registration-step-1.html'">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="add_circle">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRmuKqYPGNOwMuGE17wmqP4gSjhC85qZd0fkJG30M8nj_MQUwmZD-9aGd8pGGsGoKWJOAlFt5F--Xf4cR491fGyyFzFwP0hd7zG81GF_wPZKjUvyQM0dBLxKveJrfRX13DhymlnUnsyHAbEcM5D6ZTpl6Qgw7ufb6I6GE8dkEUhIKO6ICjctWfDePSSzjbR9xC724mD22KRJrtaiwEO7uDozlKgESy1m9zrketPIHlbotg7A16PJ90-FrY3N5cFQYNB_o0tyYRjg"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative w-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-12">
+<div class="flex-1 flex flex-col items-start z-10">
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">
+                    Your neighborhood, <br/><span class="text-secondary-container">verified.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
+                    Join a secure, trusted local network where real neighbors connect, share, and support each other. Experience the power of safe proximity.
+                </p>
+<div class="flex gap-4">
+<button class="bg-secondary-container hover:bg-secondary text-on-secondary-container font-label-lg text-label-lg px-6 py-4 rounded-[16px] transition-colors shadow-md">
+                        Join the Community
+                    </button>
+<button class="bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg px-6 py-4 rounded-[16px] transition-colors">
+                        Learn More
+                    </button>
+</div>
+</div>
+<div class="flex-1 relative w-full h-[400px] lg:h-[500px]">
+<img alt="Diverse group of neighbors talking cheerfully" class="w-full h-full object-cover rounded-[24px] shadow-lg" data-alt="A diverse group of neighbors standing outdoors in a sunny, tree-lined residential street, laughing and talking warmly. The scene is brightly lit with natural sunlight, creating a welcoming and modern light-mode aesthetic. The color palette emphasizes natural greens, warm skin tones, and subtle deep indigo clothing accents. The mood is highly positive, secure, and genuinely community-focused, reflecting a clean and trustworthy professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtB63KeEAMgPg26CftTUeXzWjI9DpKceJZ4mwB0liDoIqfBr4j7K4JGoSuY36-KIjGxcGC5ISfdZaxNIHW5jBN3B3pCHl2LFlBfLxMlzSa8qIx9xbT6EwYevmLW-hLx7Dr7CkxlvLW3aKdltP-kxPS3PwLxs9gNM4kEd_nQJpKK3jxGtAVaT-L9_LJuIPunFfN7KTuXRyYQnzjHZlWlKbwUdeRLt16RVQJHTICa3BjLBMkEXTjkO13_15zvE2vSy_UucWQnQ2Kgg"/>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 bg-surface shadow-lg rounded-xl p-4 flex items-center gap-3 border border-surface-variant">
+<div class="bg-primary-container text-on-primary-container p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">ID Verified Network</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">100% Real Neighbors</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="bg-surface-container-low py-20">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">How it Works</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A seamless journey from verified entry to meaningful local connections.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">fingerprint</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">1. Verified Identity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Every member undergoes secure identity verification to ensure a safe, bot-free environment.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-secondary-fixed rounded-full flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-3xl">local_activity</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">2. Connect via Activities</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Discover local events, groups, and activities happening right outside your door.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-full flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined text-3xl">volunteer_activism</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">3. Mutual Help</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Lend a hand or request assistance in our dedicated community support channels.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Trusted Community Section -->
+<section class="py-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="bg-primary text-on-primary rounded-[24px] overflow-hidden flex flex-col md:flex-row">
+<div class="p-12 md:p-16 flex-1 flex flex-col justify-center">
+<h2 class="font-headline-lg text-headline-lg mb-6 text-on-primary">A Trusted Community Ecosystem</h2>
+<p class="font-body-lg text-body-lg mb-8 text-primary-fixed-dim">
+                        We believe that true community thrives on trust. That's why NearConnect employs state-of-the-art verification to ensure that your local network remains secure, respectful, and genuinely helpful.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim">check_circle</span>
+<span class="font-body-md text-body-md">Bank-grade identity verification</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim">check_circle</span>
+<span class="font-body-md text-body-md">Strict zero-tolerance policy for harassment</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim">check_circle</span>
+<span class="font-body-md text-body-md">Community-moderated guidelines</span>
+</li>
+</ul>
+</div>
+<div class="flex-1 min-h-[300px] md:min-h-auto relative">
+<img alt="People interacting safely" class="absolute inset-0 w-full h-full object-cover" data-alt="A top-down view of diverse people sitting around a modern, light-wood table in a bright, collaborative community center space, interacting with digital tablets and smiling. The lighting is soft and natural, emphasizing a clean, modern aesthetic with bright white surfaces and deep indigo accents in the environment. The overall mood is focused, trustworthy, and technologically integrated, representing a secure social network." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG2dhm4KvdSKGBdqbhbVEL_QN0KZTeDoisChOibW5Or5KKcFoGr-8RE9QehW2G18gbEaIJQR1BF2ClpIrMyWgLBSiv9hn3bQMw_1owVRsnaW6w046kPCnbRp41df07dW9yvl4gXR4RZ1cmx2gXn6ulYQqKcEfhrMqXKAi8Oc4KtV0mMTQomb6ZXUYIXbRKg8yMgJieedpqnATA8gl2CSYAPFeEbLCL3kdICzuQzks9zLWcI1b-XD_LXnzp58J0AZvvfnkaVMemyA"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-12 mt-auto">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 md:col-span-1">
+<span class="font-headline-md text-headline-md font-bold text-primary block mb-4">NearConnect</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your neighborhood, verified and connected.</p>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface mb-4">Platform</h4>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-home-feed.html">How it works</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-home-feed.html">Trust &amp; Safety</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-home-feed.html">Guidelines</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface mb-4">Coming Soon</h4>
+<ul class="space-y-2">
+<li><span class="font-body-sm text-body-sm text-outline flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">commute</span> Trips</span></li>
+<li><span class="font-body-sm text-body-sm text-outline flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">storefront</span> Marketplace</span></li>
+<li><span class="font-body-sm text-body-sm text-outline flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">push_pin</span> Notice Board</span></li>
+</ul>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 h-20 bg-surface dark:bg-on-background shadow-[0_-2px_8px_rgba(0,0,0,0.04)] shadow-lg dark:shadow-none docked full-width bottom-0 rounded-t-xl">
+<!-- Active: Home -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined" data-icon="home_app_logo" style="font-variation-settings: 'FILL' 1;">home_app_logo</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm-mobile">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-label-sm text-label-sm-mobile">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm-mobile">Chat</span>
+</a>
+</nav>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+</body>
+</html>

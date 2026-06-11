@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Activity Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#920028",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#341100",
+                        "on-primary-fixed-variant": "#372abf",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#c1beff",
+                        "secondary": "#9d4300",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-container": "#ffb0b4",
+                        "on-surface-variant": "#464554",
+                        "primary": "#2a14b4",
+                        "primary-fixed": "#e3dfff",
+                        "outline-variant": "#c7c4d7",
+                        "secondary-container": "#fd761a",
+                        "surface-tint": "#5148d7",
+                        "on-surface": "#0b1c30",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#777586",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#40000c",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb690",
+                        "secondary-fixed": "#ffdbca",
+                        "tertiary": "#7b0020",
+                        "on-primary-fixed": "#100069",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-secondary-container": "#5c2400",
+                        "error": "#ba1a1a",
+                        "primary-container": "#4338ca",
+                        "on-error-container": "#93000a",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed": "#ffdada",
+                        "tertiary-container": "#a6002f"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "40px",
+                        "unit": "8px",
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "24px",
+                        "margin-mobile": "20px",
+                        "container-max-width": "1280px"
+                    },
+                    fontFamily: {
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "label-sm": ["11px", { lineHeight: "14px", fontWeight: "500" }],
+                        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "headline-xl-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Hide scrollbar for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen">
+<!-- TopAppBar (Web) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter-mobile md:px-margin-desktop h-16 bg-surface-container-lowest dark:bg-surface-dim shadow-sm md:hidden">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-extrabold">NearConnect</span>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="notifications" class="text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 duration-200" onclick="window.location.href='/event-registration-step-1.html'" onclick="window.location.href='/host-tournament-basic-details.html'">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover border-2 border-surface-container-lowest" data-alt="A close-up portrait of a diverse young professional outdoors in bright daylight. The lighting is soft and modern, casting gentle highlights on their skin. The background is a blurred urban park setting with lush green trees, creating a warm, approachable vibe. The colors are natural and vibrant, fitting a polished social platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQOZENUJ2YFXQ8gWwOZtCcu8nR5otkJACBH9l_S4ZTw-uquXBRdFALg525yQQZReGwvf4sn083FFfCBvQscoeBazzoTZjdwi5I4y7xKtiPi35mr6gMbEwQxK6JW8WyzI8S_M53IA60Da4K_Pf3KmieAlUZatpAUzyGmxqLhO7OUkiAHNeloV5TWfb25EcV5SEt0_Qv6y0FYCTr5vribdxzgYGPC6SsoCui4QTFxxfwlGNDGipmZCwM7b6fhMvetbfMD_wB5AO5DA"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+</div>
+</header>
+<div class="flex h-screen overflow-hidden pt-16 md:pt-0">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col py-6 px-4 gap-4 h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-surface-dim border-r border-outline-variant dark:border-outline z-40">
+<div class="flex flex-col items-center mb-6">
+<img alt="User profile" class="w-16 h-16 rounded-full object-cover mb-3" data-alt="A close-up portrait of a diverse young professional outdoors in bright daylight. The lighting is soft and modern, casting gentle highlights on their skin. The background is a blurred urban park setting with lush green trees, creating a warm, approachable vibe. The colors are natural and vibrant, fitting a polished social platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtLEDGYDldBeO8BdW9x1EzTSC1Idf0BNZdHXrcVgm8uy6_jVSN2gMWt9AXzqkJD3DVyWWpYtllDRF7B7p7DGo9a3JFTbstpkyIZdzr_HndIkHkMwKuQhFyMMdVBwI0Lm_9dLcWx8CVYWufWeb64otux35nwsV3D6rj6y5e3Wwx0Ia4-gxQ5FjzlcXnN83Fs3cNXNnMS-waYPW7H9_4HQM6vZiEU_8JDcvsgTP0QS9eok_fdu4sw9gl5qUl6Nl1IBFH6zAQP1qqFg"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+<h1 class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed-dim font-extrabold">NearConnect</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Local Community</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined">home</span>
+                    Home
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl font-bold font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined icon-filled">groups</span>
+                    Community
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined">emergency</span>
+                    Help
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-lg text-label-lg transition-all duration-300 ease-in-out" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined">chat</span>
+                    Chat
+                </a>
+</div>
+<button class="mt-auto w-full py-3 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-bold shadow-md hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                Create Activity
+            </button>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow overflow-y-auto w-full md:ml-64 bg-background pb-24 md:pb-0 relative">
+<div class="max-w-[1280px] mx-auto px-gutter-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface mb-2">Activity Hub</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Discover what's happening in your neighborhood. Join a local match, attend a workshop, or start your own event.</p>
+</div>
+<button class="hidden md:flex px-6 py-3 bg-secondary text-on-secondary rounded-xl font-label-lg text-label-lg font-bold shadow-[0_4px_12px_rgba(157,67,0,0.2)] hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95 items-center gap-2 flex-shrink-0" onclick="window.location.href='/host-tournament-basic-details.html'">
+<span class="material-symbols-outlined">add_circle</span>
+                        Create Activity
+                    </button>
+</div>
+<!-- Sub-categories (Chips) -->
+<div class="flex overflow-x-auto no-scrollbar gap-3 pb-2 -mx-gutter-mobile px-gutter-mobile md:mx-0 md:px-0">
+<button class="whitespace-nowrap px-4 py-2 bg-primary-container text-on-primary-container rounded-full font-label-lg text-label-lg font-bold flex items-center gap-2 shadow-sm border border-primary/10" onclick="window.location.href='/event-registration-step-1.html'" onclick="window.location.href='/host-tournament-basic-details.html'">
+<span class="text-lg">🏏</span> Cricket
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">🏐</span> Volleyball
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">📺</span> Match Watch
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">🎮</span> Gaming
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">💃</span> Dance
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">🎬</span> Movie Night
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">🎵</span> Music
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-label-lg text-label-lg transition-colors flex items-center gap-2 border border-outline-variant/30">
+<span class="text-lg">🍕</span> Food
+                    </button>
+</div>
+<!-- Grid Layout for Activities -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Activity Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300">
+<!-- Image Header -->
+<div class="h-40 w-full relative bg-surface-container-high">
+<img alt="Cricket Match" class="w-full h-full object-cover" data-alt="A bright, sunlit community cricket match in a local park. The pitch is vibrant green, and several players in casual sportswear are visible in the background. The lighting is warm and golden, suggesting late afternoon. The overall vibe is energetic, friendly, and deeply tied to neighborhood community sports." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkVSoszUiBSX3w4dfuOlaQjMW6dEAevw_DjFz-_JF1_KRj5Om1OR0lXecrYP3mgz7tVxxk2Td7uI1huBXjsRuLPZhRVaVRkTlJqBAMd7eZedV3B1cR7ERCJzHkQLLxGlJeamKRcuGot-VVPuvdTLLuF5JN_bhevPXFEapySh5ZsWZMYKit83TCrWPsBSZBw1o1hDUGVrFDS08S6QYdM3qTGZ7YjuJ8oWDJObvm_7EeMgqX-_6oG4YOB-XhCM72T0lWlVO63-k7nA"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Elm Park • 0.5mi away</span>
+</div>
+<div class="absolute -bottom-6 right-4 w-12 h-12 rounded-full border-4 border-surface-container-lowest bg-surface-container-high overflow-hidden shadow-sm">
+<img alt="Host" class="w-full h-full object-cover" data-alt="A close-up portrait of a smiling young man in a casual t-shirt. The lighting is soft and flattering, taken outdoors during the day. The background is a soft blur of green foliage, matching the energetic community vibe of a local sports organizer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrSNFlJqClrHhCxk-el5S-pnrRwY72s2r9wZJRQDGYLWtL3zNMk97raJDke7EnzhASS2TCxUKKbV2K7UuRweSiTtkfmbAlOpi8FPcnqrtkIpPvP7ZqnHFL1yjOWtO1lQ-gUuCbH4RQw39nTPA6S-gNN4M43XPzcNM68Wm54vr1xCcy8iTBslzdfAkCscVqNDWLmPd9I6tdJxjaOJuHUxZdeWWOOUaEva3oIDyp09nRncMQAjwf2wYoQClcD3KRAdmNj_UDZY1f-Q"/>
+</div>
+</div>
+<!-- Content -->
+<div class="p-5 pt-6 flex flex-col flex-grow">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xl">🏏</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Cricket</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Sunday Friendly Match</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hosted by <span class="font-semibold text-on-surface">Alex R.</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-sm text-body-sm">Sun, Oct 15 • 9:00 AM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-body-sm text-body-sm">12/22 spots filled</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-4">Casual weekend game for all skill levels. Bring your own kit if you have one, otherwise we have spares!</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="Enrolled User" class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait of a young woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAldlIZSwkUi2btwq-2fNhOn2DcYk6scOu3ea05Lj1m6d6kKbji4_fofZHgFpHJvG2f_lxQqIB5oNjyRq5nCpXXBFDj5ypcItNEu_noRO7R4lplsAv4Ha15qsz50Rsr7-CE6sqs0vEiC7qz8pOsUv-LaIsstSFlHZEV-uJ9SEe26JIwrs1hKHToIVzA-GR5PvVSOBoDeR7qLp-0r52XFZMuyONEVX8YuUg4uYowQEqU3o33mH4BcPJjW2vhZUa2TAqv7GW4gtX8Q"/>
+<img alt="Enrolled User" class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait of a young man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDikE1jlQMnGu9duYlmisYCrn1evsohP6Nja6hI4gGdpk43qshoHEqk_C7CcqfH2RyvBVktH0XJ1V2YX4qOPWnwIT9k5hvAIzwoo_EotVJnfREQOEc_aC2u6KC18vXNVIGwoyiMnImXVMFmAd619D0Y0BK5dzu6nhHmmEGO460qts0JMeqDXMgdhzK4xBdkLVF9h0ZFqNlA1iaf6HLwFbtxkbHd-KM35E5IkOvx8BldYo1PVnBVm_KV4pQgYGqtzPJdLizjkiib5A"/>
+<div class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-2 ring-surface-container-lowest bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-bold">
+                                        +10
+                                    </div>
+</div>
+<button class="px-5 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-label-md font-bold shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors active:scale-95">
+                                    Enroll
+                                </button>
+</div>
+</div>
+</div>
+<!-- Activity Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="h-40 w-full relative bg-surface-container-high">
+<img alt="Volleyball" class="w-full h-full object-cover" data-alt="A bright, sunlit beach volleyball court with golden sand. A volleyball net stretches across the middle. The scene is bright and airy, representing an active, outdoor community lifestyle. The colors are warm, featuring sandy yellows and clear blue skies." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBegPSlFEvwupNzSBVmlQPJZwhVu1fq-widYibnfriSjKiRedZ6MCHlyiW5NEXJOcWh1Fbzdub-LCVUWOxkM08GiCJGFcUvxxhrsrAp7494QN_LaEFG3RUPmvSpeIzhrVqGAzw817ViWP3Ct5dijr2favv-63RvecGVk_F81Pr88YubwDr6q8fGQq-FOSlMPzJUGBnX_uhZt92kFhOz69Yl4ey-hbO7jFcW2OiS99SkKOLpAZ9ZSZww1JXunEyFOWPD5qutgCCW-Q"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">South Beach • 2.1mi away</span>
+</div>
+<div class="absolute -bottom-6 right-4 w-12 h-12 rounded-full border-4 border-surface-container-lowest bg-surface-container-high overflow-hidden shadow-sm">
+<img alt="Host" class="w-full h-full object-cover" data-alt="A portrait of a cheerful middle-aged woman outdoors. She has short hair and a welcoming smile. The lighting is soft natural daylight, conveying a friendly and trustworthy community member vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi1QZ4UojvMltpfdTkXNIE5am_MqgEpW6PgFZwrPowEUEXaX5C0nUPSW_qSrQ2rNpnKq8uDspHuezlmHA2FAtkCwcbYv_OdE6jvU9t1IiRGq665iz4BgAAC1QuEgGQO34ixEEqd7Vrwyl3avF4geKjh-Zzk4MPhPQTKKmuSN2fnO1aDomQ3XYBrRklqN3HuoTe2ytxVfiysuxklDmKCCU4r6vkFZAFKXXKoZkH6vX-iwiJkKZZZov2c_VW4uS5EN73Mio0Die3sw"/>
+</div>
+</div>
+<div class="p-5 pt-6 flex flex-col flex-grow">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xl">🏐</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Volleyball</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Sunset Spikes</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hosted by <span class="font-semibold text-on-surface">Maria S.</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-sm text-body-sm">Wed, Oct 18 • 5:30 PM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-body-sm text-body-sm">8/12 spots filled</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-4">Join us for some 4v4 beach volleyball as the sun sets. Intermediate level preferred but all are welcome to sub.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="Enrolled User" class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait of a young man looking focused" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8KJLLecVVaUyfMhsjyuDoErGMR8EPQ4whoDo1L6Ybrb5V9DfNbjQkI2ILUkGey7PWDuFhswpkt4bcCez10CTipUDnUWHV77nXxh6wzuJBbtB3KCkCp0pJXvyaUSvUeT_8Bdey0OP6VJmWrOJLGMBYOKWg8nsCueYYy7Mbn0PsZo_epqgyi7s_sFQXujcJ67pCQ4AuBcxBcREuE3puissyPZVx4xMk5rfcop_pL4NEq2sa7Df1BDhDDQmXRkWqHzEGPc-00eAXyQ"/>
+<div class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-2 ring-surface-container-lowest bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-bold">
+                                        +7
+                                    </div>
+</div>
+<button class="px-5 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-label-md font-bold shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors active:scale-95" onclick="window.location.href='/event-registration-step-1.html'">
+                                    Enroll
+                                </button>
+</div>
+</div>
+</div>
+<!-- Activity Card 3 -->
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="h-40 w-full relative bg-surface-container-high">
+<img alt="Gaming" class="w-full h-full object-cover" data-alt="A modern living room setting focused on a large TV screen showing a colorful video game interface. Several video game controllers rest on a sleek coffee table in the foreground. The lighting is slightly dim with atmospheric LED accents, creating a cozy and social indoor gaming environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmmyJ73bSRpqdvLIRYqGpOLT5Kmfl2_axqxngyu3Lk2RGNPl9fAR0NctZJrsgpvLToCcAXBn_gFiVj1WTscMZacM1XG80e75pw2rRbENrbL0VZdDMLI-hVvb27TlQoCdx8wR9rKtgV3O_tAtVkp0X-5dRZazBwrQ7CiEANIUdBSspORtzjMxjlzc6P-8-_FGc8Y9fmOq0mZY9wZQw34DnM2mLKHfcV0rUjVRtlqxrwgQQgakvrSTsh4WKPx2fAoh6e4yfNIw4zdg"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Downtown Hub • 1.2mi away</span>
+</div>
+<div class="absolute -bottom-6 right-4 w-12 h-12 rounded-full border-4 border-surface-container-lowest bg-surface-container-high overflow-hidden shadow-sm">
+<img alt="Host" class="w-full h-full object-cover" data-alt="A portrait of a young woman with a warm, engaging expression. She is indoors with soft, warm lighting. She looks like an approachable and fun community host." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0V7sspU4EB6H8euXJEtfZ200UpqB1IxgC5-oFahFV0RBsjaOhFTpj522YtcKa7sw0Fg0I3mIQ9HtCqgb-CbjamDDd47xVsH0_SlOXOPQeUkhwyYDpoJc6AH4T1ckCtCHbx3TrfKC1szG7bWQhTX3b5MC_rNVK28Jj1ny26Qt5w6s8_gwirYRpRwHFrdBIF36xmasOgx0wCF3Lkp0U29p8WzoWHPdDDjNDRLOkh_5MFcCtep2k_XwSV-aymPY21X-1AHX6yF4voQ"/>
+</div>
+</div>
+<div class="p-5 pt-6 flex flex-col flex-grow">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xl">🎮</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Gaming</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Smash Bros Tournament</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hosted by <span class="font-semibold text-on-surface">Sarah J.</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-sm text-body-sm">Fri, Oct 20 • 7:00 PM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-body-sm text-body-sm">16/16 spots filled</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-4">Local friendly tournament. Bring your own controller if possible! Snacks and drinks provided. Winner gets a small prize.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="Enrolled User" class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTALvM6IxY5F-J0M-YIM8HD5VB1hQYGE8B7LERWb9k7EGY8UBuv9IVKin7-NCT440MkTtUzj5qTvxDNgavG-FhElRZHcv2-S0KJRrUv2wvfBIKVYinKbb103Kg_COeCubOLN57NTKpoGzFHpiUhWQYeMxgRvZ_Zog7jN4tiFVXoxXU7H7th_qcTxfn1gcrEYtTKWcNxViHiKiZ2Cw88gK81tVAJs7-gPKQAj-lXIt6bbPdMsjNAGFjYJg2OBLDkeccQhuCiErJkQ"/>
+<div class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-2 ring-surface-container-lowest bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-bold">
+                                        +15
+                                    </div>
+</div>
+<button class="px-5 py-2 bg-surface-container-highest text-on-surface-variant rounded-xl font-label-md text-label-md font-bold cursor-not-allowed opacity-70" onclick="window.location.href='/event-registration-step-1.html'">
+                                    Full
+                                </button>
+</div>
+</div>
+</div>
+<!-- Activity Card 4 -->
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant flex flex-col hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="h-40 w-full relative bg-surface-container-high">
+<img alt="Dance" class="w-full h-full object-cover" data-alt="A spacious, well-lit dance studio with hardwood floors and mirrored walls. Several people are casually practicing dance moves in the background. The lighting is bright and even, conveying a positive, energetic, and open learning environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAntXZpEO1Ph4J2xt0A8V3oUOIa9XJbiokhR-G8UEw41kgyzmeFs6JI82qr9ZP19csizeSn5ZBwaDGo6GVOQA6bARP78knPP6IAWHSC6Aulhg_h8ysPerbHWQkaLEGsCmH5LGytosqPymymsIhZa6C0kVxoVkKoxv4SbgEKwuozMvVpg5wVRRbmzYJ961T4CU53LlzGhkn-rOvN8Gh7_mKzlbxiX_wQEwszTZWoJ2W7mAJJttPjsVXoxehCpDg6_syxuk6gYlwpSg"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Community Center • 0.8mi away</span>
+</div>
+<div class="absolute -bottom-6 right-4 w-12 h-12 rounded-full border-4 border-surface-container-lowest bg-surface-container-high overflow-hidden shadow-sm">
+<img alt="Host" class="w-full h-full object-cover" data-alt="A portrait of an energetic young man indoors, smiling broadly. The background is a slightly blurred indoor space. He looks active and approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8GaKAa1SS0dyWUzgr7qVey8lGc2dM3EqcJaARDrZeP2nOrUoYSmyvkLOvOZ7A9fkn1gGtzFmcEuvJ3_IApTTylbKg7IxULvdv9N3wZvCvkVMo0ixDO8YRK7fnLnkKtlIjqWSqeU_zdxevgS-tagm3RpQ4Zd2dB5TrzesRMJJ5sRdD0sHoFtjI3oSLVTTcdR6cLRYsmYDhN_OfQ4BriEpLOBqJVJ6EhfoO601ngXjdkwJKabQNAtNhLd2JzkQ1le1EpIMfXGTz-Q"/>
+</div>
+</div>
+<div class="p-5 pt-6 flex flex-col flex-grow">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xl">💃</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Dance</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Beginner Salsa Basics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hosted by <span class="font-semibold text-on-surface">David M.</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-sm text-body-sm">Sat, Oct 21 • 2:00 PM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-body-sm text-body-sm">4/20 spots filled</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-4">Never danced before? Perfect! We're doing a completely beginner-friendly walkthrough of the basic steps. No partner needed.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="Enrolled User" class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait of a young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1wckegeOgMdNFVzVLzUzWqa_LiGvhmZbo8P-6s0l3LeD793-XGwL9dSfo0L_O8OmNEmv3w_ybkLuU-NUUHG9XmTGONm2tELUijH2YSwiNETbpAdZ_qYDQ010fXhPh7Fe3MGq3tJKx38bmT2xYkU1jSAs-0V7Y89Bgj92WjK0H_KxtvrEbWjDoUs_Yk8ntZT7b8J3aSCzgOnKGw-hB-Yn0HQ-LWkl9mklMYq6qrdWfg_PlA1jA2GxTd2CQhoSUX2Nwnqtg8oKJug"/>
+<div class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-2 ring-surface-container-lowest bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-bold">
+                                        +3
+                                    </div>
+</div>
+<button class="px-5 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-label-md font-bold shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors active:scale-95">
+                                    Enroll
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More / FAB for mobile -->
+<div class="flex justify-center mt-6 mb-8 md:mb-0">
+<button class="px-6 py-3 bg-surface-container border border-outline-variant text-on-surface-variant rounded-full font-label-lg text-label-lg font-bold hover:bg-surface-container-high transition-colors active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined">expand_more</span>
+                        Load More Activities
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container dark:bg-inverse-surface shadow-[0_-2px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 rounded-xl py-1" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-5 py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined mb-1 icon-filled">groups</span>
+<span class="font-label-sm text-label-sm-mobile font-bold">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 rounded-xl py-1" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined mb-1">emergency</span>
+<span class="font-label-sm text-label-sm-mobile">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 rounded-xl py-1" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined mb-1">chat</span>
+<span class="font-label-sm text-label-sm-mobile">Chat</span>
+</a>
+</nav>
+<!-- Mobile FAB for Create Activity -->
+<button class="md:hidden fixed bottom-24 right-4 w-14 h-14 bg-secondary text-on-secondary rounded-[16px] shadow-[0_8px_24px_rgba(157,67,0,0.3)] flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>

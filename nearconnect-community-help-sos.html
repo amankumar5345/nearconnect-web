@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearConnect - Community Help &amp; SOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#100069",
+                        "primary": "#2a14b4",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "outline-variant": "#c7c4d7",
+                        "surface-container": "#e5eeff",
+                        "on-surface-variant": "#464554",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdbca",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#40000c",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#4338ca",
+                        "tertiary": "#7b0020",
+                        "surface": "#f8f9ff",
+                        "on-secondary-container": "#5c2400",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#920028",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-container": "#a6002f",
+                        "on-secondary-fixed": "#341100",
+                        "surface-bright": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#ffdada",
+                        "secondary-fixed-dim": "#ffb690",
+                        "secondary-container": "#fd761a",
+                        "on-primary-fixed-variant": "#372abf",
+                        "primary-fixed": "#e3dfff",
+                        "outline": "#777586",
+                        "on-secondary-fixed-variant": "#783200",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-background": "#0b1c30",
+                        "on-primary-container": "#c1beff",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-tint": "#5148d7",
+                        "secondary": "#9d4300",
+                        "on-tertiary-container": "#ffb0b4",
+                        "on-surface": "#0b1c30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "40px",
+                        "container-max-width": "1280px",
+                        "gutter-desktop": "24px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(186, 26, 26, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(186, 26, 26, 0); }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface dark:bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary">NearConnect</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A small, professional portrait photo of a user, suitable for a profile avatar in a modern light-mode social app interface. Neutral background, well-lit, showing a smiling face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOzOFbjf8nb2Cst-s96LNN0_mS5sZFGbu0mUC7qgkaAJ4qkkrTdFr5oMUxT7yA9jIONc2CFEhaW_LfDLfWK8yQhPQErsT8pyZo6-rTR9OrPs92WKTiMUM_7Gf-LDax8tSntufyevSvAvV80jR-ZRnHKTPG5FI-yafMbaJK5uKCxLr6_YWYUN531LfPOIaJ9-KIYsz6x1rRQuYOrYU5ZaBnCSFvnPnnIJp8ZxxkK4ZreRWkUA1CO5ejqOmb9Uu5_uqSrllS-Dk9Ow"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-64 z-40 flex-col pt-24 pb-8 px-4 bg-surface dark:bg-surface-container-low border-r border-outline-variant">
+<div class="mb-10 px-4">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-headline-sm text-headline-sm font-black text-primary">NearConnect</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Local Proximity</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-lg text-label-lg">Community</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl" href="/nearconnect-map-discovery.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-lg text-label-lg">Trips</span>
+</a>
+<a class="flex items-center gap-4 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 active:translate-x-1 duration-150" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<span class="font-label-lg text-label-lg font-bold">Help</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-lg text-label-lg">Chat</span>
+</a>
+</div>
+<div class="mt-auto px-4">
+<button class="w-full bg-primary text-on-primary font-label-lg text-label-lg py-3 rounded-full hover:bg-primary-container transition-colors shadow-sm">
+                Plan a Trip
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-20 md:pt-10 pb-24 md:pb-10 px-margin-mobile md:px-margin-desktop md:ml-64 max-w-container-max-width mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+<div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface mb-2">Community Help &amp; SOS</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Support your neighbors or request a helping hand.</p>
+</div>
+<button class="bg-secondary-container text-on-secondary-container font-label-lg text-label-lg px-6 py-3 rounded-xl hover:bg-secondary hover:text-on-secondary transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined">campaign</span>
+                Request Help
+            </button>
+</div>
+<!-- Trust Indicator Banner -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container flex-shrink-0">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Verified Community Network</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All help requests and offers are from verified local residents to ensure a safe environment.</p>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-gutter-desktop">
+<!-- Sidebar / Filters -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-6">
+<!-- Filters Component -->
+<div class="bg-surface rounded-2xl p-5 shadow-sm border border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Filters</h3>
+<div class="space-y-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block">Category</label>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline" type="checkbox"/>
+<span class="font-body-sm text-body-sm">All Categories</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-outline" type="checkbox"/>
+<span class="font-body-sm text-body-sm">Medical &amp; Safety</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-outline" type="checkbox"/>
+<span class="font-body-sm text-body-sm">Tools &amp; Repairs</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-outline" type="checkbox"/>
+<span class="font-body-sm text-body-sm">Groceries &amp; Errands</span>
+</label>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block">Urgency</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-error-container text-on-error-container font-label-sm text-label-sm rounded-full cursor-pointer border border-transparent hover:border-error transition-colors">Critical (SOS)</span>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm rounded-full cursor-pointer border border-transparent hover:border-secondary transition-colors">High</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm rounded-full cursor-pointer border border-transparent hover:border-outline transition-colors">Normal</span>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block">Distance</label>
+<input class="w-full accent-primary" max="10" min="0" type="range" value="2"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mt-1">
+<span>0.1km</span>
+<span>Within 2km</span>
+<span>10km</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Feed -->
+<div class="flex-1 space-y-8">
+<!-- Urgent SOS Highlights Carousel -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+                            Urgent Requests
+                        </h2>
+<a class="font-label-md text-label-md text-primary hover:underline" href="/nearconnect-community-help-sos.html">View All</a>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 hide-scrollbar -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<!-- SOS Card 1 -->
+<div class="flex-shrink-0 w-72 sm:w-80 bg-surface rounded-[24px] p-4 shadow-[0_8px_24px_rgba(186,26,26,0.12)] border border-error-container pulse-animation relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error-container rounded-bl-full -z-0 opacity-50"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-1 bg-error text-on-error font-label-sm text-label-sm rounded-md uppercase tracking-wider">SOS • Medical</span>
+<span class="font-label-sm text-label-sm text-error font-bold">0.3km away</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Need First Aid Kit ASAP</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Minor kitchen accident, ran out of sterile gauze and bandages. Need someone to drop off a basic kit if nearby.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Requester" class="w-8 h-8 rounded-full" data-alt="Small avatar of a concerned-looking person in a modern UI context. Light mode, clean background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrffpIXHbZDDKnRPxZFfyG2jjmibfsPAEYg-ORBnlbqazzu7PsCZLVnjBcsW6irHwYrofGJq82MA3Ks0fSJRmdEkL7ewxqlpovNWomgew8PlWFl5vQPJQKitW7uZu6VPXU3pqSTFnRgd-5iFHw2vnhRMgVi6bxdQyZs45SgVWid1ERdxgtnLF3LgqaaymDyRHF2bbtiH_dhahGq4DHRF9cvLXpqjmAY1DGwrU0qcX1TiAAYA8XKpx-2AU6JaZkczY5BzSdROWm7g"/>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface flex items-center gap-1">Sarah M. <span class="material-symbols-outlined text-primary text-[14px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span></p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">Posted 5m ago</p>
+</div>
+</div>
+<button class="bg-error text-on-error font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-on-error-container transition-colors">Help Now</button>
+</div>
+</div>
+</div>
+<!-- SOS Card 2 -->
+<div class="flex-shrink-0 w-72 sm:w-80 bg-surface rounded-[24px] p-4 shadow-[0_8px_24px_rgba(253,118,26,0.12)] border border-secondary-fixed-dim relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-md uppercase tracking-wider">High • Tools</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">1.2km away</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Need Jumper Cables</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Car died in the grocery store parking lot. Hoping someone nearby can give me a quick jump start.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface font-label-md">JD</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface flex items-center gap-1">John D. <span class="material-symbols-outlined text-primary text-[14px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span></p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">Posted 15m ago</p>
+</div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-secondary hover:text-on-secondary transition-colors">Help Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- General Help Feed -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Recent Community Requests</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Standard Card 1 -->
+<div class="bg-surface rounded-[24px] p-4 shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-md">Groceries</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">0.8km away</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Pick up prescription</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">I'm currently homebound with a sprained ankle. Could someone pick up a prescription for me from the local pharmacy?</p>
+<div class="flex items-center justify-between mt-auto pt-2 border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<img alt="Requester" class="w-8 h-8 rounded-full" data-alt="Small avatar of an elderly person in a modern UI context. Light mode, clean background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDunRsG6O0cj9Np2wNPrvVfq9D-d_r8Gp4x-wWdtHwBn6x6Bt58-u4ksOmCKeUoa4fXZ-BvgorDBt30dvKYj5QXzcOOAXwVX2W5Fj3yqjr5Q0AftRLcAhmS9r__vSl2bMvs0yppFQD7gx7jl5ga6tzbjdF6373j4wVc9c62-29HfgzgpvuflVGbaT9S1QV3pqTttJ6Szrf0X2nmYBmMX02L6uf-EPAXd3kHyX4IS9w7sX6Q7hF7h8npd5qHkf8qcCQF9RGrkvwpzA"/>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface flex items-center gap-1">Martha W. <span class="material-symbols-outlined text-primary text-[14px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span></p>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary-container transition-colors">Offer Help</button>
+</div>
+</div>
+<!-- Standard Card 2 -->
+<div class="bg-surface rounded-[24px] p-4 shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-md">General</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1.5km away</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Help moving a sofa</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Need an extra pair of hands to move a sofa from the first floor to the second floor. Should take 15 mins tops.</p>
+<div class="flex items-center justify-between mt-auto pt-2 border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-label-md">DB</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface flex items-center gap-1">David B. <span class="material-symbols-outlined text-primary text-[14px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span></p>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary-container transition-colors">Offer Help</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>

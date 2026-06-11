@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trips &amp; Picnics - NearConnect</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#783200",
+                        "surface-dim": "#cbdbf5",
+                        "primary-container": "#4338ca",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#7b0020",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#fd761a",
+                        "on-surface-variant": "#464554",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-container": "#a6002f",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed": "#ffdbca",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-primary-container": "#c1beff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-tertiary-container": "#ffb0b4",
+                        "outline-variant": "#c7c4d7",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary-fixed": "#ffdada",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#40000c",
+                        "on-tertiary-fixed-variant": "#920028",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#100069",
+                        "on-primary-fixed-variant": "#372abf",
+                        "on-error": "#ffffff",
+                        "outline": "#777586",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed": "#341100",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#2a14b4",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e3dfff",
+                        "secondary": "#9d4300",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "surface-tint": "#5148d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "24px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "40px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased font-body-md">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface shadow-sm transition-colors duration-200">
+<div class="flex items-center gap-4">
+<button class="md:hidden flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors text-primary" onclick="window.location.href='/event-registration-step-1.html'">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-extrabold text-primary">NearConnect</span>
+</div>
+<div class="flex items-center gap-2 md:gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant flex items-center justify-center relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-surface-container-high cursor-pointer ml-2">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a young professional woman with natural makeup, looking warmly into the camera. She is in a bright, modern indoor setting with soft, diffused lighting. The image embodies a friendly, approachable, and corporate-casual aesthetic fitting for a community networking platform avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfluDqQY_U4uC-eyZZC8_01sOAqFb3uabBsZNvLL53S15RFhXhm_TREiuv8_-AMGWr6dDaAKe7mb-lS1eo-XpCzjW0MuP_e5ZAQXjpL8O2KFvmav8Eyu8LTzZNFBzz584WeWd-lIZgbYY-MmuZfQDtgiZeC3xtKAhlLJgRl8-u9to4gSnWmDLMdFLL4SSrIitgYgsqJBmRumZ8ex-3xnNhAkgjZMQOVZDUetDtaoEY2JbP4PLuYmF1JEXXqiNOsS3Vu7SCnjXauw"/ onclick="window.location.href='/nearconnect-user-profile.html'" style="cursor: pointer;">
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-64 z-40 flex-col pt-24 pb-8 px-4 bg-surface border-r border-outline-variant">
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl group" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="home">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl group" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="groups">groups</span>
+<span class="font-label-lg text-label-lg">Community</span>
+</a>
+<a class="flex items-center gap-4 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 transition-all font-bold" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined icon-fill" data-icon="explore">explore</span>
+<span class="font-label-lg text-label-lg">Trips</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl group" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="emergency">emergency</span>
+<span class="font-label-lg text-label-lg">Help</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-xl group" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="chat">chat</span>
+<span class="font-label-lg text-label-lg">Chat</span>
+</a>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant">
+<button class="w-full bg-primary-container text-on-primary-container font-label-lg text-label-lg py-3 px-4 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 active:scale-95 duration-200 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Plan a Trip
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 md:pt-24 pl-0 min-h-screen">
+<div class="max-w-[container-max-width] mx-auto px-margin-mobile md:px-margin-desktop py-6">
+<!-- Hero Section -->
+<section class="mb-10">
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-primary mb-2">Explore Together: Community Trips &amp; Picnics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Discover local adventures and scenic spots curated by your community. Join upcoming trips or organize your own local gathering.</p>
+</section>
+<!-- Filter Bar -->
+<section class="mb-8">
+<div class="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
+<button class="shrink-0 bg-primary-fixed text-on-primary-fixed font-label-lg text-label-lg px-5 py-2.5 rounded-full border border-primary-fixed-dim hover:bg-primary hover:text-white transition-colors">
+                        All
+                    </button>
+<button class="shrink-0 bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg px-5 py-2.5 rounded-full border border-outline-variant hover:bg-surface-container-highest transition-colors" onclick="window.location.href='/event-registration-step-1.html'">
+                        Weekend Getaways
+                    </button>
+<button class="shrink-0 bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg px-5 py-2.5 rounded-full border border-outline-variant hover:bg-surface-container-highest transition-colors">
+                        Day Picnics
+                    </button>
+<button class="shrink-0 bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg px-5 py-2.5 rounded-full border border-outline-variant hover:bg-surface-container-highest transition-colors">
+                        Adventure
+                    </button>
+<button class="shrink-0 bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg px-5 py-2.5 rounded-full border border-outline-variant hover:bg-surface-container-highest transition-colors">
+                        Family Friendly
+                    </button>
+</div>
+</section>
+<!-- Trip Cards Grid -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-background">Upcoming Trips</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Trip Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col relative group">
+<div class="absolute top-4 left-4 z-10 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant/50 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Adventure</span>
+</div>
+<div class="h-48 w-full relative overflow-hidden bg-surface-container">
+<img alt="Hiking trail in mountains" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A breathtaking view of a rugged mountain trail bathed in golden hour sunlight. The scene captures a pristine outdoor adventure setting with clear blue skies, rocky terrain, and lush green pines dotting the landscape. The image conveys a sense of active exploration, vitality, and natural beauty typical of a weekend wilderness getaway." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsECm-m2OZySuEIVuWg0Aglvmw_X8gznTFtPqe4uBmtpmFVE4oKPJhfmaGJylcB7GzvN4jWnKu8wkEQrdrY4ExEoBJ1-LN7n-nX2N6G0iYDKHawPtgj0u_CRxez-sA-uJf7fxeZbGl5vdRuN4-0NUYgkG4k8VXHkD-bDX-7XhBXFQuXQKr3LXMocHwUk-kbhMd9g7qg9fdxnFdkMksWSN2FUaXK4dQ79eCmzSupv_rZjkkpWyjQpO3YFwJdr-3aAS5d4dLrWTNnw"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Mountain Peak Hike &amp; Camp</h3>
+<div class="flex items-center text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1">calendar_today</span>
+                                Oct 12-14 | 2 Nights
+                            </div>
+<div class="flex items-center gap-3 mb-4 mt-auto">
+<img alt="Organizer" class="w-8 h-8 rounded-full object-cover" data-alt="A small, circular avatar portrait of a smiling young man outdoors, wearing a casual jacket." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs7cQ_Yg8kRAGpDEusaA2xlT7kt17NAaEOsjYNni4f_ms2W5GQN6hCKXgTGPAFQdx9he_5wQb09xXhR_d-bqyqgHqsGl65ww5K9stGx6QI3Da2WEmpcoLWFVfmx1_4il2gWkV3kFrOo1xo41LK2pVz79eBpMWOOPMlqOhdAeBdQ_FxTCEZMiReh-nAfdsb7_wt60KKdjAj8thy9UeRKv_Uve0udF0NTg5Snrr2lWJWcuTQ04Y9tEjALeaL5x9wTwOqAo8Nv-PONg"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Organized by</span>
+<span class="font-label-md text-label-md text-on-background">David Chen</span>
+</div>
+<div class="ml-auto text-right">
+<span class="font-headline-sm text-headline-sm text-primary">$45</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">/person</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full mb-2 overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full w-[60%]"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-on-surface-variant mb-4">
+<span>12/20 Joined</span>
+<span>8 spots left</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-grow bg-primary-container text-on-primary-container font-label-lg text-label-lg py-2.5 rounded-xl hover:opacity-90 transition-opacity active:scale-95 duration-200">
+                                    Join Trip
+                                </button>
+<button class="w-12 flex items-center justify-center bg-surface-container text-primary rounded-xl hover:bg-surface-container-high transition-colors border border-outline-variant" onclick="window.location.href='/event-registration-step-1.html'">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trip Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col relative group">
+<div class="absolute top-4 left-4 z-10 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant/50 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Day Picnic</span>
+</div>
+<div class="h-48 w-full relative overflow-hidden bg-surface-container">
+<img alt="Picnic blanket in a park" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A relaxing scene of a woven picnic blanket spread out on lush green grass in a sun-dappled park. A woven basket, some fresh fruit, and a couple of books are arranged neatly on the blanket. The soft, natural lighting suggests a lazy Sunday afternoon, conveying warmth, community gathering, and peaceful outdoor leisure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIZH9z1lk9lR8VdzMDxGhCdoHoehvzTEaoIAyUPSOgBWmD7UM4FOPp1kUizYGwyh9FnnYCU52uxNhN1dMWI1qoAv7QB0lBO8QY7Z8QScn8CUXDkpa_JHQvf5vHCCWtdP_DieF2yYGsPIQ1sqFO8jxgoG_fyHnvVWntyg_FXOv-KFB-ehyqY3g9ckoWFWjFolbaDAawG_ujcnIWdN1JwhqIH0XG1TtcbRPUG0hWKre6gLkVI_bJLF8xnuklLt9RekZP_JWPt-HTLA"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Lakeside Sunday Potluck</h3>
+<div class="flex items-center text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1">calendar_today</span>
+                                Oct 18 | 12:00 PM - 4:00 PM
+                            </div>
+<div class="flex items-center gap-3 mb-4 mt-auto">
+<img alt="Organizer" class="w-8 h-8 rounded-full object-cover" data-alt="A small, circular avatar portrait of a friendly woman with a warm smile, set against a blurred outdoor background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqTIiSpJCy08CSLIFWqjWHAe-gho256lgCqKr00e1HFqHYxhb2gLKINBr_J9G3UOKesdY8Ocg_OTqZYuB77Q63dMpsiOW9g2Q8ko_WBuBUClZEm3nMcNWfhF2aZjdjIUVXyFDy3LxuhmLdXUrxRvPThQXDH8Czsx9tnVPCuL4i7GwijwNCbpc5og108ipL2rPu4J6VmIKQYMsp-Oy2UxR3ERd6MuEN3861j1Rr9Nj_Zn0IofY_LXlXBQ-L_xHYMQpYQKl-hgJwtA"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Organized by</span>
+<span class="font-label-md text-label-md text-on-background">Sarah Jenkins</span>
+</div>
+<div class="ml-auto text-right flex items-center">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-md font-label-sm text-label-sm">Free</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full mb-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-on-surface-variant mb-4">
+<span>34/40 Joined</span>
+<span>Almost full</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-grow bg-primary-container text-on-primary-container font-label-lg text-label-lg py-2.5 rounded-xl hover:opacity-90 transition-opacity active:scale-95 duration-200">
+                                    Join Trip
+                                </button>
+<button class="w-12 flex items-center justify-center bg-surface-container text-primary rounded-xl hover:bg-surface-container-high transition-colors border border-outline-variant">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Picnic Spots Carousel -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-background">Popular Picnic Spots</h2>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<!-- Spot 1 -->
+<div class="min-w-[280px] md:min-w-[320px] bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm flex flex-col overflow-hidden shrink-0">
+<div class="h-32 w-full bg-surface-container relative">
+<img alt="Botanical Garden" class="w-full h-full object-cover" data-alt="A serene view of a well-maintained botanical garden. Lush green lawns are bordered by vibrant blooming flowers and mature trees offering dappled shade. The bright, daytime lighting highlights the tranquil and inviting nature of this urban oasis, perfect for a peaceful community gathering or family picnic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE4arPfGPYzn9PnHzBP41wUZG2A5-XelLKSh0Mw42QXM320yogjpBYL2OPXEaFac-Dhr93axnTc0Fg3O4m2iN2uTn3O8cYrjzV7c2ygcmi-SlO1Z8PnRW-Ngg-LDYr12aFCu2MGa1fSVKKh4rAGQwxU73mSG3lcQP-cVRb0AljRFsXs7RG6z1frQmP0MJ26vA-GE8KhDve3pmQdpgNFkmKPqMJHpwxPpL82ElkS27rMEacqnTJ_4B5iFJumwdb9z5eyIVj-RMPmA"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h4 class="font-headline-sm text-headline-sm text-on-background mb-1">Centennial Park Gardens</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> 1.2 miles away
+                            </p>
+<div class="mt-auto flex gap-2">
+<button class="flex-grow border border-primary text-primary font-label-md text-label-md py-2 rounded-lg hover:bg-surface-container transition-colors">
+                                    Directions
+                                </button>
+<button class="flex-grow bg-secondary-container text-on-secondary-container font-label-md text-label-md py-2 rounded-lg hover:opacity-90 transition-opacity">
+                                    Plan Meetup
+                                </button>
+</div>
+</div>
+</div>
+<!-- Spot 2 -->
+<div class="min-w-[280px] md:min-w-[320px] bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm flex flex-col overflow-hidden shrink-0">
+<div class="h-32 w-full bg-surface-container relative">
+<img alt="Riverside Park" class="w-full h-full object-cover" data-alt="A scenic view of a wide, gently flowing river flanked by green grassy banks and a paved walking path. The sun is shining brightly, reflecting off the water. People can be seen faintly in the distance enjoying the waterfront, creating a lively yet relaxing atmosphere typical of a beloved local recreation area." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1Y9AuqdUtzpy-5Gq8tPwwmBQxetSe0oR3RTqFKuaXdqOY8shC3or79ma-h8urdbxm5LUVHhpAT7O_jLTq6vcWPiRfEtLoA6C5cjP1-RuuISyOFGZLsaU55paD1JN_99do0tV61KbU-M1SvLtqXaUWu-080yIqwfubUz2Xektng64vlFhNsijxyaPipa4l3Hb7G-zXCWlaGYoM_hdMP_FLokfVHobVwdnWozEuD_jDclNfuEFaT4DMNRh4k_hjTatJcOhrgckREg"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h4 class="font-headline-sm text-headline-sm text-on-background mb-1">Riverside Promenade</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> 3.5 miles away
+                            </p>
+<div class="mt-auto flex gap-2">
+<button class="flex-grow border border-primary text-primary font-label-md text-label-md py-2 rounded-lg hover:bg-surface-container transition-colors">
+                                    Directions
+                                </button>
+<button class="flex-grow bg-secondary-container text-on-secondary-container font-label-md text-label-md py-2 rounded-lg hover:opacity-90 transition-opacity">
+                                    Plan Meetup
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant z-50 pb-[env(safe-area-inset-bottom,16px)]">
+<div class="flex justify-around items-center h-16 px-2">
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-home-feed.html">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-activity-hub.html">
+<span class="material-symbols-outlined mb-1" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary font-bold" href="/nearconnect-map-discovery.html">
+<div class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full mb-1">
+<span class="material-symbols-outlined icon-fill" data-icon="explore">explore</span>
+</div>
+<span class="font-label-sm text-label-sm">Trips</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-community-help-sos.html">
+<span class="material-symbols-outlined mb-1" data-icon="emergency">emergency</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="/nearconnect-chat-interface.html">
+<span class="material-symbols-outlined mb-1" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">Chat</span>
+</a>
+</div>
+</nav>
+<!-- Mobile FAB (Visible only on mobile) -->
+<button class="md:hidden fixed bottom-24 right-4 z-40 bg-primary-container text-on-primary-container w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+
+<!-- DEV NAVIGATION OVERLAY -->
+<div id="dev-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; font-family: sans-serif;">
+  <button onclick="document.getElementById('dev-menu').style.display = document.getElementById('dev-menu').style.display === 'none' ? 'block' : 'none'" style="background: #4338ca; color: white; border: none; padding: 12px 24px; border-radius: 99px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    Dev Menu 🛠️
+  </button>
+  <div id="dev-menu" style="display: none; position: absolute; bottom: 60px; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 300px; max-height: 400px; overflow-y: auto;">
+    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #111827;">All Pages</h3>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      
+        <li>
+          <a href="/nearconnect-user-profile.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-user-profile.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-trips-picnics.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-trips-picnics.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-settings-privacy.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-settings-privacy.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-onboarding-flow.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-onboarding-flow.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-notice-board.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-notice-board.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-map-discovery.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-map-discovery.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-home-feed.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-home-feed.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-games-hub-tournament-brackets.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-community-help-sos.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-chat-interface.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-chat-interface.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-activity-hub.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            nearconnect-activity-hub.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/index.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            index.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-schedule-launch.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-format-rules-with-entry-fee.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/nearconnect-games-hub-tournament-brackets.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            host-tournament-basic-details.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-2.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-2.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-step-1.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-step-1.html
+          </a>
+        </li>
+      
+        <li>
+          <a href="/event-registration-confirmation.html" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+            event-registration-confirmation.html
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- /DEV NAVIGATION OVERLAY -->
+  <!-- SHARED SIDEBAR -->
+  <script type="module" src="/src/sidebar.js"></script>
+</body>
+</html>
