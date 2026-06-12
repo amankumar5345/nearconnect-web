@@ -12,6 +12,7 @@ htmlFiles.forEach((file) => {
 });
 
 export default defineConfig({
+  base: '/nearconnect-web/',
   build: {
     rollupOptions: {
       input
