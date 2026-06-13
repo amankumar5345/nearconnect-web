@@ -19,7 +19,7 @@ const navHtml = `
     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
       ${htmlFiles.map(file => `
         <li>
-          <a href="/${file}" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
+          <a href="${file}" style="color: #4338ca; text-decoration: none; font-size: 14px; display: block; padding: 4px 8px; border-radius: 4px; hover:background: #f3f4f6;">
             ${file}
           </a>
         </li>

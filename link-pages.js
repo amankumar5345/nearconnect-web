@@ -13,21 +13,21 @@ function updateLinks(content, filename) {
   let newContent = content;
 
   const mapping = [
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Home|Feed)<\/)/gi, replacement: 'href="/nearconnect-home-feed.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Map|Discover|Explore)<\/)/gi, replacement: 'href="/nearconnect-map-discovery.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Activity|Hub|Activities)<\/)/gi, replacement: 'href="/nearconnect-activity-hub.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Chat|Messages)<\/)/gi, replacement: 'href="/nearconnect-chat-interface.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Profile|Account)<\/)/gi, replacement: 'href="/nearconnect-user-profile.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Settings|Privacy)<\/)/gi, replacement: 'href="/nearconnect-settings-privacy.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Notice|Board|Notices)<\/)/gi, replacement: 'href="/nearconnect-notice-board.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Trips|Picnics)<\/)/gi, replacement: 'href="/nearconnect-trips-picnics.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Games|Tournament)<\/)/gi, replacement: 'href="/nearconnect-games-hub-tournament-brackets.html"' },
-    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:SOS|Help)<\/)/gi, replacement: 'href="/nearconnect-community-help-sos.html"' }
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Home|Feed)<\/)/gi, replacement: 'href="nearconnect-home-feed.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Map|Discover|Explore)<\/)/gi, replacement: 'href="nearconnect-map-discovery.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Activity|Hub|Activities)<\/)/gi, replacement: 'href="nearconnect-activity-hub.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Chat|Messages)<\/)/gi, replacement: 'href="nearconnect-chat-interface.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Profile|Account)<\/)/gi, replacement: 'href="nearconnect-user-profile.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Settings|Privacy)<\/)/gi, replacement: 'href="nearconnect-settings-privacy.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Notice|Board|Notices)<\/)/gi, replacement: 'href="nearconnect-notice-board.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Trips|Picnics)<\/)/gi, replacement: 'href="nearconnect-trips-picnics.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:Games|Tournament)<\/)/gi, replacement: 'href="nearconnect-games-hub-tournament-brackets.html"' },
+    { regex: /href="[^"]*"(?=[^>]*>[\s\S]*?(?:SOS|Help)<\/)/gi, replacement: 'href="nearconnect-community-help-sos.html"' }
   ];
 
   // Specific flows
   if (filename === 'index.html') {
-    newContent = newContent.replace(/href="[^"]*"(?=[^>]*>[\s\S]*?(?:Sign In|Join|Get Started)<\/a>)/gi, 'href="/nearconnect-onboarding-flow.html"');
+    newContent = newContent.replace(/href="[^"]*"(?=[^>]*>[\s\S]*?(?:Sign In|Join|Get Started)<\/a>)/gi, 'href="nearconnect-onboarding-flow.html"');
     newContent = newContent.replace(/<button([^>]*)>([\s\S]*?(?:Sign In|Join|Get Started)[\s\S]*?)<\/button>/gi, '<button$1 onclick="window.location.href=\'/nearconnect-onboarding-flow.html\'">$2</button>');
   }
 

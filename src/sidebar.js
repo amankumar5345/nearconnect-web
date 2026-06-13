@@ -85,7 +85,7 @@ function buildSidebar() {
     ">
       <!-- Brand header -->
       <div style="padding: 20px 16px 12px; border-bottom: 1px solid #c7c4d7;">
-        <a href="/nearconnect-home-feed.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+        <a href="nearconnect-home-feed.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
           <span class="material-symbols-outlined" style="font-size:28px; color:#2a14b4; font-variation-settings:'FILL' 1;">hub</span>
           <span style="font-size:18px; font-weight:800; color:#2a14b4; letter-spacing:-0.02em;">NearConnect</span>
         </a>
@@ -100,7 +100,7 @@ function buildSidebar() {
 
       <!-- Bottom user area -->
       <div style="padding: 12px 8px; border-top: 1px solid #c7c4d7;">
-        <a href="/nearconnect-user-profile.html" style="
+        <a href="nearconnect-user-profile.html" style="
           display:flex; align-items:center; gap:10px; padding: 10px 12px;
           border-radius: 12px; text-decoration:none; color: #0b1c30;
           background: #eff4ff; cursor: pointer;

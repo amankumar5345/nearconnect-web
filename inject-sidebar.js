@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 // Pages that should NOT have the sidebar (login, landing, onboarding)
 const EXCLUDE = ['index.html', 'login.html', 'nearconnect-onboarding-flow.html'];
 
-const sidebarTag = `  <!-- SHARED SIDEBAR -->\n  <script type="module" src="/src/sidebar.js"></script>\n`;
+const sidebarTag = `  <!-- SHARED SIDEBAR -->\n  <script type="module" src="src/sidebar.js"></script>\n`;
 
 const htmlFiles = globSync('*.html').filter(f => !EXCLUDE.includes(f));
 let count = 0;
